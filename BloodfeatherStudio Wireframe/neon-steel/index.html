@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Steel — BloodFeather Studio</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .ns-hero-content .label { animation: fadeUp 0.7s var(--ease-out) 0.2s both; }
+    .ns-title               { animation: fadeUp 0.9s var(--ease-out) 0.4s both; }
+    .ns-tagline             { animation: fadeUp 0.8s var(--ease-out) 0.6s both; }
+    .ns-badges              { animation: fadeUp 0.8s var(--ease-out) 0.72s both; }
+    .ns-hero-actions        { animation: fadeUp 0.8s var(--ease-out) 0.85s both; }
+
+    /* scanline effect on screens */
+    .ns-screen::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px, transparent 3px,
+        rgba(0,229,255,0.015) 3px, rgba(0,229,255,0.015) 4px
+      );
+      pointer-events: none;
+    }
+
+    /* neon text flicker */
+    @keyframes flicker {
+      0%,100%{ opacity:1 }
+      92%    { opacity:1 }
+      93%    { opacity:0.4 }
+      94%    { opacity:1 }
+      96%    { opacity:0.6 }
+      97%    { opacity:1 }
+    }
+    .ns-title .neon { animation: flicker 8s ease-in-out infinite; }
+
+    /* stat counter style */
+    .ns-stat-block {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 0;
+      border: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+    .ns-stat {
+      padding: 2rem 1.5rem;
+      border-right: 1px solid var(--border);
+      text-align: center;
+    }
+    .ns-stat:last-child { border-right: none; }
+    .ns-stat-num {
+      font-family: var(--f-display);
+      font-size: 2.2rem; line-height: 1;
+      color: var(--neon-c);
+      text-shadow: 0 0 20px rgba(0,229,255,0.4);
+      display: block; margin-bottom: 0.4rem;
+    }
+    .ns-stat-label {
+      font-family: var(--f-ui); font-size: 0.62rem;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--faint);
+    }
+
+    @media (max-width: 640px) {
+      .ns-stat-block { grid-template-columns: 1fr 1fr; }
+      .ns-stat:nth-child(2) { border-right: none; }
+      .ns-stat:nth-child(1),
+      .ns-stat:nth-child(2) { border-bottom: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body class="page-load">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="../home/" class="nav-logo">
+      <svg class="nav-logo-mark feather-mark" viewBox="0 0 36 58" fill="none">
+        <defs><linearGradient id="fg-ns" x1="18" y1="0" x2="18" y2="58" gradientUnits="userSpaceOnUse"><stop stop-color="#E0253F"/><stop offset="1" stop-color="#6B0E1E" stop-opacity="0.3"/></linearGradient></defs>
+        <path class="vane" d="M18 2C10 13 3 30 4 44C5 52 12 56 18 57C24 56 31 52 32 44C33 30 26 13 18 2Z" fill="url(#fg-ns)"/>
+        <line x1="18" y1="2" x2="18" y2="57" stroke="#C9913A" stroke-width="0.8" stroke-linecap="round"/>
+        <line x1="18" y1="18" x2="7"  y2="27" stroke="#C9913A" stroke-width="0.5" opacity="0.5" stroke-linecap="round"/>
+        <line x1="18" y1="27" x2="5"  y2="36" stroke="#C9913A" stroke-width="0.5" opacity="0.5" stroke-linecap="round"/>
+        <line x1="18" y1="36" x2="6"  y2="44" stroke="#C9913A" stroke-width="0.5" opacity="0.5" stroke-linecap="round"/>
+        <line x1="18" y1="18" x2="29" y2="27" stroke="#C9913A" stroke-width="0.5" opacity="0.5" stroke-linecap="round"/>
+        <line x1="18" y1="27" x2="31" y2="36" stroke="#C9913A" stroke-width="0.5" opacity="0.5" stroke-linecap="round"/>
+        <line x1="18" y1="36" x2="30" y2="44" stroke="#C9913A" stroke-width="0.5" opacity="0.5" stroke-linecap="round"/>
+      </svg>
+      <div class="nav-logo-text">BloodFeather<em>Studio</em></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="../games/" class="active">Games</a></li>
+      <li><a href="../about/">About</a></li>
+      <li><a href="../contact/">Contact</a></li>
+    </ul>
+    <a href="../contact/" class="nav-cta">Get In Touch</a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="nav-drawer">
+    <a href="../home/">Home</a>
+    <a href="../games/">Games</a>
+    <a href="../about/">About</a>
+    <a href="../contact/">Contact</a>
+  </div>
+
+  <!-- ── HERO ─────────────────────────────────────────── -->
+  <section class="ns-hero">
+    <div class="ns-bg"></div>
+    <div class="ns-grid-overlay"></div>
+    <div class="ns-glow-c"></div>
+    <div class="ns-glow-p"></div>
+
+    <!-- City skyline SVG backdrop -->
+    <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden;">
+      <svg viewBox="0 0 1440 500" preserveAspectRatio="xMidYMax slice" style="position:absolute;bottom:0;left:0;width:100%;opacity:0.18;">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#00E5FF" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#00E5FF" stop-opacity="0.12"/>
+          </linearGradient>
+        </defs>
+        <!-- Buildings -->
+        <rect x="0"    y="220" width="60"  height="280" fill="#0A0A2A"/>
+        <rect x="65"   y="160" width="80"  height="340" fill="#08082A"/>
+        <rect x="150"  y="200" width="50"  height="300" fill="#0A0A2A"/>
+        <rect x="205"  y="120" width="100" height="380" fill="#06062A"/>
+        <rect x="310"  y="180" width="70"  height="320" fill="#0A0A2A"/>
+        <rect x="385"  y="140" width="90"  height="360" fill="#08082A"/>
+        <rect x="480"  y="100" width="120" height="400" fill="#05052A"/>
+        <rect x="605"  y="160" width="80"  height="340" fill="#0A0A2A"/>
+        <rect x="690"  y="80"  width="100" height="420" fill="#06062A"/>
+        <rect x="795"  y="140" width="90"  height="360" fill="#0A0A2A"/>
+        <rect x="890"  y="110" width="110" height="390" fill="#08082A"/>
+        <rect x="1005" y="170" width="70"  height="330" fill="#0A0A2A"/>
+        <rect x="1080" y="130" width="90"  height="370" fill="#06062A"/>
+        <rect x="1175" y="190" width="60"  height="310" fill="#0A0A2A"/>
+        <rect x="1240" y="150" width="80"  height="350" fill="#08082A"/>
+        <rect x="1325" y="200" width="115" height="300" fill="#0A0A2A"/>
+        <!-- Window lights -->
+        <rect x="80"   y="175" width="6" height="4" fill="#00E5FF" opacity="0.7"/>
+        <rect x="95"   y="195" width="5" height="4" fill="#A855F7" opacity="0.6"/>
+        <rect x="220"  y="135" width="8" height="4" fill="#00E5FF" opacity="0.8"/>
+        <rect x="238"  y="155" width="6" height="4" fill="#00E5FF" opacity="0.5"/>
+        <rect x="260"  y="145" width="5" height="4" fill="#A855F7" opacity="0.7"/>
+        <rect x="395"  y="155" width="7" height="4" fill="#00E5FF" opacity="0.6"/>
+        <rect x="415"  y="175" width="5" height="4" fill="#A855F7" opacity="0.5"/>
+        <rect x="495"  y="115" width="9" height="4" fill="#00E5FF" opacity="0.9"/>
+        <rect x="515"  y="135" width="7" height="4" fill="#00E5FF" opacity="0.6"/>
+        <rect x="540"  y="125" width="5" height="4" fill="#A855F7" opacity="0.7"/>
+        <rect x="707"  y="95"  width="8" height="4" fill="#00E5FF" opacity="0.9"/>
+        <rect x="722"  y="115" width="6" height="4" fill="#00E5FF" opacity="0.7"/>
+        <rect x="738"  y="105" width="5" height="4" fill="#A855F7" opacity="0.6"/>
+        <rect x="900"  y="125" width="8" height="4" fill="#00E5FF" opacity="0.8"/>
+        <rect x="918"  y="145" width="6" height="4" fill="#A855F7" opacity="0.5"/>
+        <rect x="1088" y="145" width="7" height="4" fill="#00E5FF" opacity="0.7"/>
+        <rect x="1104" y="165" width="5" height="4" fill="#A855F7" opacity="0.6"/>
+        <!-- Ground glow -->
+        <ellipse cx="720" cy="500" rx="600" ry="40" fill="url(#sky)"/>
+      </svg>
+    </div>
+
+    <div class="ns-hero-content">
+      <p class="label">BloodFeather Studio &nbsp;·&nbsp; 2025</p>
+      <h1 class="ns-title">
+        <span class="neon">Neon</span>
+        <span class="steel">Steel</span>
+      </h1>
+      <p class="ns-tagline">The city remembers every drop of blood. So do you.</p>
+      <div class="ns-badges">
+        <span class="ns-badge">Action RPG</span>
+        <span class="ns-badge">PC</span>
+        <span class="ns-badge">Top-Down</span>
+        <span class="ns-badge">Cyberpunk</span>
+        <span class="ns-badge">In Development</span>
+      </div>
+      <div class="ns-hero-actions" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="../contact/" class="btn btn-neon">Wishlist Now</a>
+        <a href="#overview" class="btn btn-ghost">Learn More</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll" style="color:var(--neon-c);opacity:0.5;">
+      <span style="color:var(--neon-c);">Scroll</span>
+      <div class="hero-scroll-line" style="background:linear-gradient(to bottom,var(--neon-c),transparent);"></div>
+    </div>
+  </section>
+
+  <!-- ── STATS ─────────────────────────────────────────── -->
+  <div style="padding:0 clamp(1.5rem,5vw,4rem); background:var(--dark); border-bottom:1px solid var(--border);">
+    <div class="container ns-stat-block">
+      <div class="ns-stat reveal">
+        <span class="ns-stat-num">4</span>
+        <span class="ns-stat-label">Team Members</span>
+      </div>
+      <div class="ns-stat reveal">
+        <span class="ns-stat-num">12+</span>
+        <span class="ns-stat-label">Months Dev</span>
+      </div>
+      <div class="ns-stat reveal">
+        <span class="ns-stat-num">30+</span>
+        <span class="ns-stat-label">Story Branches</span>
+      </div>
+      <div class="ns-stat reveal">
+        <span class="ns-stat-num">∞</span>
+        <span class="ns-stat-label">Neon-Drenched Nights</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── OVERVIEW ──────────────────────────────────────── -->
+  <section class="ns-overview" id="overview">
+    <div class="container">
+      <div class="ns-overview-grid">
+
+        <div class="ns-overview-text reveal reveal-left">
+          <p class="label">The World</p>
+          <h2>A city that chews you up and asks for more.</h2>
+          <p>Vektor City, 2087. The megacorps won. The streets belong to gangs, junkies, and mercenaries for hire. You are ARIA — a cybernetically-enhanced operative with a fractured memory and a contract on your own head.</p>
+          <p>Every alley tells a story. Every corpo enforcer is someone's family. Every choice you make ripples through a world that is always watching, always recording, always ready to use it against you.</p>
+
+          <div class="ns-features">
+            <div class="ns-feature">
+              <div class="ns-feature-icon">⚔</div>
+              <div>
+                <h4>Fluid Combat System</h4>
+                <p>Chain abilities, environmental kills, and real-time tactical decisions in top-down arenas that reward creativity over button mashing.</p>
+              </div>
+            </div>
+            <div class="ns-feature">
+              <div class="ns-feature-icon">◈</div>
+              <div>
+                <h4>Branching Narrative</h4>
+                <p>30+ story branches shaped by your choices. Factions remember your actions. The city's fate changes based on who you side with — and who you betray.</p>
+              </div>
+            </div>
+            <div class="ns-feature">
+              <div class="ns-feature-icon">⬡</div>
+              <div>
+                <h4>Cybernetic Augmentation</h4>
+                <p>Build ARIA from the chrome up. Skill trees span stealth, brute force, hacking, and persuasion — mix and match for a playstyle no one has seen.</p>
+              </div>
+            </div>
+            <div class="ns-feature">
+              <div class="ns-feature-icon">♫</div>
+              <div>
+                <h4>Original Soundtrack</h4>
+                <p>A hand-crafted synth-noir score that shifts dynamically with gameplay — calm in exploration, frantic in combat, haunting in the aftermath.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: screens + atmosphere -->
+        <div class="reveal reveal-right">
+          <!-- Main screen placeholder -->
+          <div style="
+            aspect-ratio:16/10;
+            background:linear-gradient(135deg,#0A0718,#0D1228,#0A0D22);
+            border:1px solid var(--border-l);
+            position:relative; overflow:hidden;
+            display:flex; align-items:center; justify-content:center;
+            margin-bottom:1rem;
+          ">
+            <!-- Inline game screenshot illustration -->
+            <svg width="100%" height="100%" viewBox="0 0 560 350" preserveAspectRatio="xMidYMid slice" fill="none">
+              <defs>
+                <radialGradient id="floor-g" cx="50%" cy="100%" r="60%">
+                  <stop offset="0%" stop-color="#00E5FF" stop-opacity="0.08"/>
+                  <stop offset="100%" stop-color="transparent"/>
+                </radialGradient>
+                <filter id="glow-f">
+                  <feGaussianBlur stdDeviation="3" result="blur"/>
+                  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              <!-- Floor grid -->
+              <rect width="560" height="350" fill="#05050F"/>
+              <line x1="0" y1="200" x2="560" y2="200" stroke="#00E5FF" stroke-width="0.5" opacity="0.12"/>
+              <line x1="0" y1="240" x2="560" y2="240" stroke="#00E5FF" stroke-width="0.5" opacity="0.08"/>
+              <line x1="0" y1="280" x2="560" y2="280" stroke="#00E5FF" stroke-width="0.5" opacity="0.05"/>
+              <line x1="140" y1="175" x2="140" y2="350" stroke="#00E5FF" stroke-width="0.5" opacity="0.1"/>
+              <line x1="280" y1="175" x2="280" y2="350" stroke="#00E5FF" stroke-width="0.5" opacity="0.1"/>
+              <line x1="420" y1="175" x2="420" y2="350" stroke="#00E5FF" stroke-width="0.5" opacity="0.1"/>
+              <!-- Background city -->
+              <rect x="0"   y="60"  width="40"  height="140" fill="#0D0D28" opacity="0.9"/>
+              <rect x="45"  y="30"  width="55"  height="170" fill="#0A0A25" opacity="0.9"/>
+              <rect x="105" y="50"  width="45"  height="150" fill="#0D0D28" opacity="0.9"/>
+              <rect x="155" y="10"  width="70"  height="190" fill="#080820" opacity="0.9"/>
+              <rect x="230" y="40"  width="55"  height="160" fill="#0D0D28" opacity="0.9"/>
+              <rect x="290" y="20"  width="65"  height="180" fill="#0A0A25" opacity="0.9"/>
+              <rect x="360" y="50"  width="50"  height="150" fill="#0D0D28" opacity="0.9"/>
+              <rect x="415" y="15"  width="75"  height="185" fill="#080820" opacity="0.9"/>
+              <rect x="495" y="45"  width="65"  height="155" fill="#0D0D28" opacity="0.9"/>
+              <!-- Neon signs -->
+              <rect x="55"  y="55"  width="30" height="3" fill="#00E5FF" opacity="0.7" filter="url(#glow-f)"/>
+              <rect x="165" y="30"  width="35" height="3" fill="#A855F7" opacity="0.7" filter="url(#glow-f)"/>
+              <rect x="295" y="40"  width="28" height="3" fill="#00E5FF" opacity="0.8" filter="url(#glow-f)"/>
+              <rect x="420" y="35"  width="40" height="3" fill="#E0253F" opacity="0.7" filter="url(#glow-f)"/>
+              <!-- Floor glow -->
+              <rect width="560" height="350" fill="url(#floor-g)"/>
+              <!-- Character (top-down silhouette) -->
+              <ellipse cx="280" cy="230" rx="12" ry="8" fill="#E0E0E0" opacity="0.9"/>
+              <ellipse cx="280" cy="220" rx="7"  ry="7" fill="#C8C8D0"/>
+              <!-- Character weapon glow -->
+              <line x1="286" y1="218" x2="310" y2="205" stroke="#00E5FF" stroke-width="2" opacity="0.7" filter="url(#glow-f)"/>
+              <!-- Shadow -->
+              <ellipse cx="280" cy="238" rx="14" ry="4" fill="black" opacity="0.4"/>
+              <!-- Enemies -->
+              <ellipse cx="160" cy="190" rx="9" ry="6" fill="#C0392B" opacity="0.8"/>
+              <ellipse cx="160" cy="183" rx="5" ry="5" fill="#8B2020"/>
+              <ellipse cx="390" cy="195" rx="9" ry="6" fill="#C0392B" opacity="0.8"/>
+              <ellipse cx="390" cy="188" rx="5" ry="5" fill="#8B2020"/>
+              <!-- HUD elements -->
+              <rect x="15" y="15" width="100" height="6"  rx="1" fill="#2A2A3A"/>
+              <rect x="15" y="15" width="62"  height="6"  rx="1" fill="#E0253F" opacity="0.8"/>
+              <rect x="15" y="26" width="80"  height="4"  rx="1" fill="#2A2A3A"/>
+              <rect x="15" y="26" width="55"  height="4"  rx="1" fill="#00E5FF" opacity="0.7"/>
+              <text x="15" y="42" font-family="monospace" font-size="8" fill="#00E5FF" opacity="0.6">ARIA · LVL 12 · VEKTOR CITY</text>
+              <!-- Minimap -->
+              <rect x="490" y="15" width="55" height="45" rx="1" fill="#0A0A1A" stroke="#2A2A4A" stroke-width="1"/>
+              <rect x="518" y="33" width="4" height="4" fill="#00E5FF" opacity="0.9"/>
+              <rect x="502" y="28" width="3" height="3" fill="#E0253F" opacity="0.6"/>
+              <rect x="528" y="40" width="3" height="3" fill="#E0253F" opacity="0.6"/>
+            </svg>
+            <span style="position:absolute;bottom:0.75rem;left:1rem;font-family:var(--f-ui);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,229,255,0.4);">Gameplay · In-Engine</span>
+          </div>
+
+          <!-- Three small screens -->
+          <div class="ns-screens" style="grid-template-columns:repeat(3,1fr);">
+            <div class="ns-screen" style="background:linear-gradient(135deg,#100828,#0A1020);">
+              <!-- Character portrait placeholder -->
+              <svg width="100%" height="100%" viewBox="0 0 180 113" preserveAspectRatio="xMidYMid slice" fill="none">
+                <rect width="180" height="113" fill="#0A0520"/>
+                <ellipse cx="90" cy="95" rx="50" ry="30" fill="#1A0A30" opacity="0.8"/>
+                <ellipse cx="90" cy="55" rx="22" ry="26" fill="#C8C8D0" opacity="0.7"/>
+                <rect x="68" y="75" width="44" height="35" fill="#1A1A3A" opacity="0.8"/>
+                <rect x="78" y="50" width="5"  height="3"  rx="1" fill="#00E5FF" opacity="0.9"/>
+                <rect x="97" y="50" width="5"  height="3"  rx="1" fill="#00E5FF" opacity="0.9"/>
+                <text x="90" y="108" text-anchor="middle" font-family="monospace" font-size="6" fill="#A855F7" opacity="0.7" letter-spacing="2">ARIA · MODEL X7</text>
+              </svg>
+              <span class="ns-screen-placeholder" style="position:absolute;bottom:0.5rem;left:0.5rem;font-size:0.5rem;">Character</span>
+            </div>
+            <div class="ns-screen" style="background:linear-gradient(135deg,#0A1820,#05101A);">
+              <!-- Map placeholder -->
+              <svg width="100%" height="100%" viewBox="0 0 180 113" preserveAspectRatio="xMidYMid slice" fill="none">
+                <rect width="180" height="113" fill="#050F18"/>
+                <!-- Street grid -->
+                <line x1="60"  y1="0"   x2="60"  y2="113" stroke="#00E5FF" stroke-width="0.8" opacity="0.25"/>
+                <line x1="120" y1="0"   x2="120" y2="113" stroke="#00E5FF" stroke-width="0.8" opacity="0.25"/>
+                <line x1="0"   y1="40"  x2="180" y2="40"  stroke="#00E5FF" stroke-width="0.8" opacity="0.25"/>
+                <line x1="0"   y1="80"  x2="180" y2="80"  stroke="#00E5FF" stroke-width="0.8" opacity="0.25"/>
+                <!-- Blocks -->
+                <rect x="5"   y="5"   width="50" height="30" fill="#0D1A2A" opacity="0.8"/>
+                <rect x="65"  y="5"   width="50" height="30" fill="#0D1A2A" opacity="0.8"/>
+                <rect x="125" y="5"   width="50" height="30" fill="#0D1A2A" opacity="0.8"/>
+                <rect x="5"   y="45"  width="50" height="30" fill="#0D1A2A" opacity="0.8"/>
+                <rect x="65"  y="45"  width="50" height="30" fill="#0D1A2A" opacity="0.7"/>
+                <rect x="5"   y="85"  width="50" height="25" fill="#0D1A2A" opacity="0.8"/>
+                <rect x="65"  y="85"  width="50" height="25" fill="#0D1A2A" opacity="0.8"/>
+                <rect x="125" y="85"  width="50" height="25" fill="#0D1A2A" opacity="0.8"/>
+                <!-- Player dot -->
+                <circle cx="90" cy="60" r="4" fill="#00E5FF" opacity="0.9"/>
+                <circle cx="90" cy="60" r="8" fill="#00E5FF" opacity="0.15"/>
+                <!-- Enemy dots -->
+                <circle cx="40"  cy="25" r="2.5" fill="#E0253F" opacity="0.7"/>
+                <circle cx="145" cy="55" r="2.5" fill="#E0253F" opacity="0.7"/>
+                <text x="90" y="108" text-anchor="middle" font-family="monospace" font-size="5" fill="#00E5FF" opacity="0.5" letter-spacing="2">VEKTOR CITY · DISTRICT 7</text>
+              </svg>
+              <span class="ns-screen-placeholder" style="position:absolute;bottom:0.5rem;left:0.5rem;font-size:0.5rem;">Map</span>
+            </div>
+            <div class="ns-screen" style="background:linear-gradient(135deg,#200818,#150510);">
+              <!-- Dialogue placeholder -->
+              <svg width="100%" height="100%" viewBox="0 0 180 113" preserveAspectRatio="xMidYMid slice" fill="none">
+                <rect width="180" height="113" fill="#100510"/>
+                <!-- Portrait box -->
+                <rect x="5"  y="5"  width="50" height="60" fill="#1A0820" stroke="#3D1A40" stroke-width="0.5"/>
+                <ellipse cx="30" cy="25" rx="12" ry="14" fill="#C0A090" opacity="0.6"/>
+                <rect x="18" y="36" width="24" height="25" fill="#2A1030" opacity="0.7"/>
+                <text x="30" y="75" text-anchor="middle" font-family="monospace" font-size="5" fill="#A855F7" opacity="0.8" letter-spacing="1">GHOST</text>
+                <!-- Dialogue text lines -->
+                <rect x="60" y="10" width="115" height="3" rx="1" fill="#8A7A70" opacity="0.4"/>
+                <rect x="60" y="17" width="100" height="3" rx="1" fill="#8A7A70" opacity="0.4"/>
+                <rect x="60" y="24" width="110" height="3" rx="1" fill="#8A7A70" opacity="0.4"/>
+                <rect x="60" y="31" width="85"  height="3" rx="1" fill="#8A7A70" opacity="0.4"/>
+                <!-- Choice options -->
+                <rect x="5"  y="80" width="170" height="12" rx="1" fill="#1A0820" stroke="#A855F7" stroke-width="0.5"/>
+                <rect x="5"  y="96" width="170" height="12" rx="1" fill="#0A0510" stroke="#3D1A40" stroke-width="0.5"/>
+                <text x="15" y="89" font-family="monospace" font-size="5" fill="#E0A83C" opacity="0.8">&gt; Follow the ghost signal</text>
+                <text x="15" y="105" font-family="monospace" font-size="5" fill="#8A7A70" opacity="0.6">  I work alone.</text>
+              </svg>
+              <span class="ns-screen-placeholder" style="position:absolute;bottom:0.5rem;left:0.5rem;font-size:0.5rem;">Dialogue</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STORY SECTION ─────────────────────────────────── -->
+  <section style="padding:var(--sp) clamp(1.5rem,5vw,4rem); background:var(--void); border-top:1px solid var(--border);">
+    <div class="container" style="max-width:var(--wrap);">
+      <div style="display:grid; grid-template-columns:1fr 2fr; gap:5rem; align-items:start;">
+
+        <div class="reveal reveal-left" style="position:sticky; top:8rem;">
+          <p class="label" style="color:var(--neon-c); margin-bottom:1.5rem;">The Story</p>
+          <h2 style="font-size:clamp(2rem,4vw,3rem); margin-bottom:1rem;">The city has a long memory.</h2>
+          <p style="color:var(--muted); font-style:italic; line-height:1.8;">Every choice you make is recorded. Every life you spare — or don't — echoes forward.</p>
+          <div style="margin-top:2rem; padding:1.5rem; border:1px solid var(--border-l); background:var(--surface-s);">
+            <p style="font-family:var(--f-ui); font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:0.75rem;">Platforms</p>
+            <p style="font-family:var(--f-ui); font-size:0.85rem; color:var(--ivory-2);">PC (Windows, Mac)</p>
+            <p style="font-family:var(--f-ui); font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-top:1rem; margin-bottom:0.75rem;">Engine</p>
+            <p style="font-family:var(--f-ui); font-size:0.85rem; color:var(--ivory-2);">Unity 2022 LTS</p>
+            <p style="font-family:var(--f-ui); font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-top:1rem; margin-bottom:0.75rem;">Status</p>
+            <p style="font-family:var(--f-ui); font-size:0.85rem; color:var(--neon-c);">In Active Development</p>
+          </div>
+        </div>
+
+        <div class="reveal reveal-right">
+          <div style="border-left:2px solid var(--border); padding-left:2.5rem; display:flex; flex-direction:column; gap:3rem;">
+
+            <div>
+              <p style="font-family:var(--f-ui); font-size:0.65rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--neon-c); margin-bottom:0.75rem;">Act I — The Waking</p>
+              <h3 style="font-size:1.2rem; color:var(--ivory); margin-bottom:0.75rem;">You wake up with blood on your hands and no memory of whose it is.</h3>
+              <p style="color:var(--muted); line-height:1.85;">ARIA, a black-market operative, surfaces in the lower bowels of Vektor City with a data chip embedded in her skull and a target on her back. The chip holds something the three mega-corporations would kill to erase.</p>
+            </div>
+
+            <div>
+              <p style="font-family:var(--f-ui); font-size:0.65rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--neon-c); margin-bottom:0.75rem;">Act II — The Fracture</p>
+              <h3 style="font-size:1.2rem; color:var(--ivory); margin-bottom:0.75rem;">Factions want you. Factions want you dead. Sometimes the same faction wants both.</h3>
+              <p style="color:var(--muted); line-height:1.85;">Navigate the Ironclad Syndicate, the ghost-network of the Echoes, and the cold efficiency of Helios Corp. Every alliance costs something. Nothing is free in Vektor City.</p>
+            </div>
+
+            <div>
+              <p style="font-family:var(--f-ui); font-size:0.65rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--neon-c); margin-bottom:0.75rem;">Act III — The Reckoning</p>
+              <h3 style="font-size:1.2rem; color:var(--ivory); margin-bottom:0.75rem;">The truth about who made you — and what you were made to do.</h3>
+              <p style="color:var(--muted); line-height:1.85;">The answers ARIA finds may cost the city everything. Multiple endings, none of them clean. This is a world that earns its endings.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TEAM ON THIS PROJECT ──────────────────────────── -->
+  <section style="padding:var(--sp) clamp(1.5rem,5vw,4rem); background:var(--dark); border-top:1px solid var(--border);">
+    <div class="container" style="max-width:var(--wrap);">
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:1.5rem; margin-bottom:3rem;">
+        <div>
+          <p class="label reveal" style="margin-bottom:1rem;">The Team</p>
+          <h2 class="reveal" style="font-size:clamp(1.8rem,3.5vw,3rem);">Made by four people<br>who didn't sleep enough.</h2>
+        </div>
+        <a href="../about/" class="btn btn-ghost reveal">Full Team Story →</a>
+      </div>
+
+      <div class="team-grid stagger reveal" style="grid-template-columns:repeat(4,1fr);">
+        <div class="team-card">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#12082A,#1A0A30);">
+            <span class="team-avatar-letter">A</span>
+          </div>
+          <div class="team-info">
+            <h3>Alex Chen</h3>
+            <p class="team-role">Creative Director</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#0A1228,#0A1830);">
+            <span class="team-avatar-letter">J</span>
+          </div>
+          <div class="team-info">
+            <h3>Jordan Park</h3>
+            <p class="team-role">Lead Developer</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#201020,#281230);">
+            <span class="team-avatar-letter">S</span>
+          </div>
+          <div class="team-info">
+            <h3>Sam Rivera</h3>
+            <p class="team-role">Art Director</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#0A1820,#081A22);">
+            <span class="team-avatar-letter">T</span>
+          </div>
+          <div class="team-info">
+            <h3>Taylor Kim</h3>
+            <p class="team-role">Sound &amp; Composer</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────────────── -->
+  <section style="padding:var(--sp) clamp(1.5rem,5vw,4rem); text-align:center; position:relative; overflow:hidden;">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,229,255,0.06) 0%,transparent 65%);pointer-events:none;"></div>
+    <div class="container" style="position:relative;">
+      <p class="label reveal" style="justify-content:center; color:var(--neon-c); margin-bottom:1.25rem;">Stay in the Loop</p>
+      <h2 class="reveal" style="font-size:clamp(2rem,4.5vw,3.5rem); margin-bottom:1rem;">Want to know when Neon Steel drops?</h2>
+      <p class="reveal" style="color:var(--muted); font-style:italic; margin-bottom:2rem; max-width:44ch; margin-left:auto; margin-right:auto;">Follow us for development updates, screenshots, and the occasional 3am dev log.</p>
+      <div class="reveal" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="../contact/" class="btn btn-neon">Get Notified</a>
+        <a href="../games/" class="btn btn-ghost">← All Games</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../home/" class="nav-logo" style="display:inline-flex;margin-bottom:1rem;">
+            <svg width="24" height="38" viewBox="0 0 36 58" fill="none"><defs><linearGradient id="fg-nsf" x1="18" y1="0" x2="18" y2="58" gradientUnits="userSpaceOnUse"><stop stop-color="#E0253F"/><stop offset="1" stop-color="#6B0E1E" stop-opacity="0.3"/></linearGradient></defs><path d="M18 2C10 13 3 30 4 44C5 52 12 56 18 57C24 56 31 52 32 44C33 30 26 13 18 2Z" fill="url(#fg-nsf)"/><line x1="18" y1="2" x2="18" y2="57" stroke="#C9913A" stroke-width="0.8" stroke-linecap="round"/></svg>
+            <span style="font-family:var(--f-display);font-size:0.7rem;letter-spacing:0.1em;margin-left:0.6rem;">BloodFeather<em style="display:block;font-family:var(--f-ui);font-style:normal;font-size:0.55rem;letter-spacing:0.3em;color:var(--gold);">Studio</em></span>
+          </a>
+          <p>A capstone game studio crafting dark, story-driven experiences that linger long after the controller is set down.</p>
+        </div>
+        <div class="footer-col"><h4>Navigate</h4><ul><li><a href="../home/">Home</a></li><li><a href="../games/">Games</a></li><li><a href="../about/">About</a></li><li><a href="../contact/">Contact</a></li></ul></div>
+        <div class="footer-col"><h4>Games</h4><ul><li><a href="../neon-steel/">Neon Steel</a></li><li><a href="../games/">All Games</a></li></ul></div>
+        <div class="footer-col"><h4>Connect</h4><ul><li><a href="#">Twitter / X</a></li><li><a href="#">Instagram</a></li><li><a href="#">Itch.io</a></li><li><a href="#">Discord</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 BloodFeather Studio. All rights reserved.</span>
+        <div class="social-row">
+          <a class="social-btn" href="#" aria-label="Twitter">𝕏</a>
+          <a class="social-btn" href="#" aria-label="Instagram">▣</a>
+          <a class="social-btn" href="#" aria-label="Discord">◈</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../scripts.js"></script>
+</body>
+</html>
