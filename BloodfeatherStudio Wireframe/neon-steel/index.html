@@ -35,6 +35,97 @@
     }
     .ns-title .neon { animation: flicker 8s ease-in-out infinite; }
 
+    /* ── Media Gallery ───────────────────────────────────── */
+    .media-gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 0.6rem;
+    }
+    .media-gallery-bottom {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+    }
+    .media-frame {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #07060F 0%, #0A0D1C 100%);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color var(--t2), box-shadow var(--t2);
+    }
+    .media-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .media-frame:hover {
+      border-color: rgba(0,229,255,0.4);
+      box-shadow: 0 0 24px rgba(0,229,255,0.06), inset 0 0 24px rgba(0,229,255,0.03);
+    }
+    .media-frame-lg { aspect-ratio: 16 / 9; }
+    .media-frame-md { aspect-ratio: 4 / 3; }
+    .media-frame-sm { aspect-ratio: 16 / 9; }
+    .media-frame-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      opacity: 0.35;
+      transition: opacity var(--t2);
+    }
+    .media-frame:hover .media-frame-inner { opacity: 0.55; }
+    .media-frame-icon {
+      width: 32px; height: 32px;
+      color: var(--neon-c);
+    }
+    .media-frame-label {
+      font-family: var(--f-ui);
+      font-size: 0.52rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--neon-c);
+    }
+    .media-frame-tag {
+      position: absolute;
+      bottom: 0.75rem;
+      left: 0.75rem;
+      font-family: var(--f-ui);
+      font-size: 0.5rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(0,229,255,0.4);
+      z-index: 2;
+    }
+    .media-frame-num {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      font-family: var(--f-display);
+      font-size: 0.65rem;
+      color: rgba(0,229,255,0.2);
+      z-index: 2;
+    }
+    @media (max-width: 768px) {
+      .media-gallery-grid { grid-template-columns: 1fr; }
+      .media-frame-md { aspect-ratio: 16 / 9; }
+      .media-gallery-bottom { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .media-gallery-bottom { grid-template-columns: 1fr; }
+    }
+
     /* stat counter style */
     .ns-stat-block {
       display: grid; grid-template-columns: repeat(4,1fr); gap: 0;
@@ -186,11 +277,11 @@
   <div style="padding:0 clamp(1.5rem,5vw,4rem); background:var(--dark); border-bottom:1px solid var(--border);">
     <div class="container ns-stat-block">
       <div class="ns-stat reveal">
-        <span class="ns-stat-num">4</span>
+        <span class="ns-stat-num">20</span>
         <span class="ns-stat-label">Team Members</span>
       </div>
       <div class="ns-stat reveal">
-        <span class="ns-stat-num">12+</span>
+        <span class="ns-stat-num">20+</span>
         <span class="ns-stat-label">Months Dev</span>
       </div>
       <div class="ns-stat reveal">
@@ -443,54 +534,88 @@
     </div>
   </section>
 
-  <!-- ── TEAM ON THIS PROJECT ──────────────────────────── -->
+  <!-- ── MEDIA GALLERY ────────────────────────────────── -->
   <section style="padding:var(--sp) clamp(1.5rem,5vw,4rem); background:var(--dark); border-top:1px solid var(--border);">
     <div class="container" style="max-width:var(--wrap);">
-      <div style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:1.5rem; margin-bottom:3rem;">
+
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:1.5rem; margin-bottom:2.5rem;">
         <div>
-          <p class="label reveal" style="margin-bottom:1rem;">The Team</p>
-          <h2 class="reveal" style="font-size:clamp(1.8rem,3.5vw,3rem);">Made by four people<br>who didn't sleep enough.</h2>
+          <p class="label reveal" style="margin-bottom:1rem; color:var(--neon-c);">Media</p>
+          <h2 class="reveal" style="font-size:clamp(1.8rem,3.5vw,3rem);">Screenshots &amp; Artwork</h2>
+          <p class="reveal" style="color:var(--muted); font-style:italic; margin-top:0.5rem; font-size:0.88rem;">Images coming soon — check back as development continues.</p>
         </div>
-        <a href="../about/" class="btn btn-ghost reveal">Full Team Story →</a>
       </div>
 
-      <div class="team-grid stagger reveal" style="grid-template-columns:repeat(4,1fr);">
-        <div class="team-card">
-          <div class="team-avatar" style="background:linear-gradient(135deg,#12082A,#1A0A30);">
-            <span class="team-avatar-letter">A</span>
+      <div class="media-gallery-grid reveal">
+
+        <!-- Featured large frame -->
+        <div class="media-frame media-frame-lg">
+          <div class="media-frame-inner">
+            <svg class="media-frame-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="6" width="20" height="14" rx="1"/>
+              <circle cx="12" cy="13" r="3"/>
+              <path d="M8 6V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1"/>
+            </svg>
+            <span class="media-frame-label">Screenshot Coming Soon</span>
           </div>
-          <div class="team-info">
-            <h3>Alex Chen</h3>
-            <p class="team-role">Creative Director</p>
+          <span class="media-frame-tag">Gameplay · In-Engine</span>
+          <span class="media-frame-num">01</span>
+        </div>
+
+        <!-- Medium side frame -->
+        <div class="media-frame media-frame-md">
+          <div class="media-frame-inner">
+            <svg class="media-frame-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="6" width="20" height="14" rx="1"/>
+              <circle cx="12" cy="13" r="3"/>
+              <path d="M8 6V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1"/>
+            </svg>
+            <span class="media-frame-label">Coming Soon</span>
+          </div>
+          <span class="media-frame-tag">Key Art</span>
+          <span class="media-frame-num">02</span>
+        </div>
+
+        <!-- Bottom row: 3 thumbnails -->
+        <div class="media-gallery-bottom">
+          <div class="media-frame media-frame-sm">
+            <div class="media-frame-inner">
+              <svg class="media-frame-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="6" width="20" height="14" rx="1"/>
+                <circle cx="12" cy="13" r="3"/>
+                <path d="M8 6V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1"/>
+              </svg>
+              <span class="media-frame-label">Coming Soon</span>
+            </div>
+            <span class="media-frame-tag">Environment</span>
+            <span class="media-frame-num">03</span>
+          </div>
+          <div class="media-frame media-frame-sm">
+            <div class="media-frame-inner">
+              <svg class="media-frame-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="6" width="20" height="14" rx="1"/>
+                <circle cx="12" cy="13" r="3"/>
+                <path d="M8 6V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1"/>
+              </svg>
+              <span class="media-frame-label">Coming Soon</span>
+            </div>
+            <span class="media-frame-tag">Combat</span>
+            <span class="media-frame-num">04</span>
+          </div>
+          <div class="media-frame media-frame-sm">
+            <div class="media-frame-inner">
+              <svg class="media-frame-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="6" width="20" height="14" rx="1"/>
+                <circle cx="12" cy="13" r="3"/>
+                <path d="M8 6V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1"/>
+              </svg>
+              <span class="media-frame-label">Coming Soon</span>
+            </div>
+            <span class="media-frame-tag">Character</span>
+            <span class="media-frame-num">05</span>
           </div>
         </div>
-        <div class="team-card">
-          <div class="team-avatar" style="background:linear-gradient(135deg,#0A1228,#0A1830);">
-            <span class="team-avatar-letter">J</span>
-          </div>
-          <div class="team-info">
-            <h3>Jordan Park</h3>
-            <p class="team-role">Lead Developer</p>
-          </div>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar" style="background:linear-gradient(135deg,#201020,#281230);">
-            <span class="team-avatar-letter">S</span>
-          </div>
-          <div class="team-info">
-            <h3>Sam Rivera</h3>
-            <p class="team-role">Art Director</p>
-          </div>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar" style="background:linear-gradient(135deg,#0A1820,#081A22);">
-            <span class="team-avatar-letter">T</span>
-          </div>
-          <div class="team-info">
-            <h3>Taylor Kim</h3>
-            <p class="team-role">Sound &amp; Composer</p>
-          </div>
-        </div>
+
       </div>
     </div>
   </section>
