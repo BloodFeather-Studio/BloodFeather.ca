@@ -201,7 +201,7 @@ h1, h2, h3, h4, h5 {
   background: var(--crimson);
   transform: translateX(-100%);
   transition: transform var(--t2);
-  z-index: 0;
+  z-index: -1;
 }
 .btn > * { position: relative; z-index: 1; }
 .btn:hover { color: var(--ivory); }
@@ -385,25 +385,38 @@ footer::after {
 .footer-divider svg { flex-shrink: 0; opacity: 0.5; }
 .footer-socials {
   display: flex;
-  gap: 0.65rem;
-  flex-wrap: wrap;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
   justify-content: center;
+  align-items: center;
 }
 .social-icon-btn {
-  width: 50px; height: 50px;
+  width: 38px; height: 38px;
+  flex: 0 0 38px;
   border: 1px solid var(--border);
   display: flex; align-items: center; justify-content: center;
-  color: var(--muted);
+  color: var(--crimson);
   transition: all var(--t2);
-  position: relative;
   background: var(--surface);
+  overflow: hidden;
 }
-.social-icon-btn svg { width: 19px; height: 19px; fill: currentColor; flex-shrink: 0; }
+.social-icon-btn svg {
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px;
+  min-height: 16px;
+  max-width: 16px;
+  max-height: 16px;
+  fill: currentColor;
+  display: block;
+  flex-shrink: 0;
+}
 .social-icon-btn:hover {
-  border-color: var(--crimson);
+  border-color: var(--crimson-b);
   color: var(--crimson-b);
   background: var(--crimson-m);
-  box-shadow: 0 0 18px var(--crimson-gl), inset 0 0 8px var(--crimson-m);
+  box-shadow: 0 0 14px var(--crimson-gl), inset 0 0 6px var(--crimson-m);
   transform: translateY(-2px);
 }
 .footer-nav {
@@ -534,24 +547,28 @@ footer::after {
 .hero-title {
   font-family: var(--f-display);
   font-size: clamp(3.5rem, 9.5vw, 10rem);
-  line-height: 0.88;
   letter-spacing: 0.02em;
   margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.0em;
 }
 .hero-title .blood {
   display: block; color: var(--crimson);
+  line-height: 1;
   text-shadow: 0 0 80px rgba(191,30,55,0.4);
 }
 .hero-title .feather {
   display: block; color: var(--ivory);
+  line-height: 1;
 }
 .hero-title .studio {
   display: block;
   color: transparent;
   -webkit-text-stroke: 1px var(--gold);
   font-size: 0.45em;
+  line-height: 1;
   letter-spacing: 0.35em;
-  margin-top: 0.3em;
 }
 .hero-tagline {
   font-style: italic;

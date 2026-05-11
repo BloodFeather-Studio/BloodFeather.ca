@@ -42,6 +42,63 @@
     .team-card-art:hover      { border-color: var(--neon-p); }
     .team-card-sound:hover    { border-color: var(--gold); }
 
+    /* Avatar link panel */
+    .team-avatar {
+      position: relative;
+      overflow: hidden;
+    }
+    .team-avatar-links {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      background: rgba(5, 3, 7, 0.94);
+      border-top: 1px solid var(--border-l);
+      border-left: 1px solid var(--border-l);
+      transform: translateY(102%);
+      transition: transform 0.28s var(--ease-out);
+      backdrop-filter: blur(10px);
+      min-width: 110px;
+    }
+    .team-card:hover .team-avatar-links {
+      transform: translateY(0);
+    }
+    .team-avatar-link {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.55rem 0.8rem;
+      font-family: var(--f-ui);
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color var(--t1), background var(--t1);
+      white-space: nowrap;
+    }
+    .team-avatar-link + .team-avatar-link {
+      border-top: 1px solid var(--border);
+    }
+    .team-avatar-link:hover { color: var(--ivory); background: var(--surface); }
+    .team-avatar-link svg {
+      width: 11px; height: 11px;
+      fill: currentColor;
+      flex-shrink: 0;
+      opacity: 0.7;
+    }
+
+    /* 5-column team grid */
+    .team-grid-20 {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--gap);
+    }
+    @media (max-width: 1024px) { .team-grid-20 { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 768px)  { .team-grid-20 { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 500px)  { .team-grid-20 { grid-template-columns: repeat(2, 1fr); } }
+
     @media (max-width: 600px) {
       .timeline-item { grid-template-columns: 80px 1px 1fr; }
       .timeline-date { font-size: 0.65rem; }
@@ -67,7 +124,7 @@
       <div class="nav-logo-text">BloodFeather<em>Studio</em></div>
     </a>
     <ul class="nav-links">
-      <li><a href="../games/">Games</a></li>
+      <li><a href="../neon-steel/">Neon Steel</a></li>
       <li><a href="../about/" class="active">About</a></li>
       <li><a href="../contact/">Contact</a></li>
     </ul>
@@ -76,7 +133,7 @@
   </nav>
   <div class="nav-drawer">
     <a href="../home/">Home</a>
-    <a href="../games/">Games</a>
+    <a href="../neon-steel/">Neon Steel</a>
     <a href="../about/">About</a>
     <a href="../contact/">Contact</a>
   </div>
@@ -202,78 +259,311 @@
       <div class="section-header reveal">
         <p class="label">The People</p>
         <h2>Meet the team.</h2>
-        <p>Four disciplines, one obsession. This is who builds the darkness.</p>
+        <p>Twenty people. Two disciplines. One obsession. This is who builds the darkness.</p>
       </div>
 
-      <div class="team-grid stagger reveal">
+      <!-- Art Team -->
+      <div style="margin-bottom:4rem;">
+        <p class="label reveal" style="margin-bottom:2rem; color:var(--crimson);">Art</p>
+        <div class="team-grid-20 stagger reveal">
 
-        <!-- Alex Chen -->
-        <div class="team-card team-card-creative">
-          <div class="team-avatar" style="background:linear-gradient(160deg,#1A0818 0%,#2A1028 100%);">
-            <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--crimson);">A</span>
-          </div>
-          <div class="team-info">
-            <h3>Alex Chen</h3>
-            <p class="team-role">Creative Director</p>
-            <p style="font-size:0.82rem;color:var(--muted);margin-top:0.75rem;line-height:1.6;">Drives the vision and the narrative voice. If it has a name, Alex named it. If it has a soul, Alex shaped it.</p>
-            <div style="margin-top:1rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
-              <span style="font-family:var(--f-ui);font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.25rem 0.6rem;border:1px solid var(--border);color:var(--faint);">Narrative</span>
-              <span style="font-family:var(--f-ui);font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.25rem 0.6rem;border:1px solid var(--border);color:var(--faint);">Direction</span>
+          <!-- Alice Bell -->
+          <div class="team-card team-card-creative">
+            <div class="team-avatar" style="background:linear-gradient(160deg,#1A0810 0%,#2A1018 100%);">
+              <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--crimson);">A</span>
+              <div class="team-avatar-links">
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3v2H7v14h14v-7h2v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h8zm7 0V8h-2V5.414l-9.293 9.293-1.414-1.414L17.586 4H15V2h6v1z"/></svg>Portfolio</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Alice Bell</h3>
+              <p class="team-role">Art / Creative Director</p>
             </div>
           </div>
-        </div>
 
-        <!-- Jordan Park -->
-        <div class="team-card team-card-dev">
-          <div class="team-avatar" style="background:linear-gradient(160deg,#081428 0%,#0A1C30 100%);">
-            <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--neon-c);">J</span>
-          </div>
-          <div class="team-info">
-            <h3>Jordan Park</h3>
-            <p class="team-role">Lead Developer</p>
-            <p style="font-size:0.82rem;color:var(--muted);margin-top:0.75rem;line-height:1.6;">Builds the systems that make the world feel alive. If it moves, Jordan made it move. If it breaks, Jordan fixed it at 2am.</p>
-            <div style="margin-top:1rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
-              <span style="font-family:var(--f-ui);font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.25rem 0.6rem;border:1px solid var(--border);color:var(--faint);">Unity</span>
-              <span style="font-family:var(--f-ui);font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.25rem 0.6rem;border:1px solid var(--border);color:var(--faint);">C#</span>
-              <span style="font-family:var(--f-ui);font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.25rem 0.6rem;border:1px solid var(--border);color:var(--faint);">Systems</span>
+          <!-- Aria Yasna Charktab Moghadam -->
+          <div class="team-card team-card-art">
+            <div class="team-avatar" style="background:linear-gradient(160deg,#1A0820 0%,#280A2A 100%);">
+              <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--neon-p);">A</span>
+              <div class="team-avatar-links">
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3v2H7v14h14v-7h2v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h8zm7 0V8h-2V5.414l-9.293 9.293-1.414-1.414L17.586 4H15V2h6v1z"/></svg>Portfolio</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Aria Yasna Charktab Moghadam</h3>
             </div>
           </div>
-        </div>
 
-        <!-- Sam Rivera -->
-        <div class="team-card team-card-art">
-          <div class="team-avatar" style="background:linear-gradient(160deg,#180820 0%,#221030 100%);">
-            <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--neon-p);">S</span>
-          </div>
-          <div class="team-info">
-            <h3>Sam Rivera</h3>
-            <p class="team-role">Art Director</p>
-            <p style="font-size:0.82rem;color:var(--muted);margin-top:0.75rem;line-height:1.6;">Defines what the world looks like and — more importantly — how it feels. Every color choice has a reason. Every shadow tells a story.</p>
-            <div style="margin-top:1rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
-              <span style="font-family:var(--f-ui);font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.25rem 0.6rem;border:1px solid var(--border);color:var(--faint);">Pixel Art</span>
-              <span style="font-family:var(--f-ui);font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.25rem 0.6rem;border:1px solid var(--border);color:var(--faint);">UI/UX</span>
+          <!-- Bianca May Golloher -->
+          <div class="team-card team-card-creative">
+            <div class="team-avatar" style="background:linear-gradient(160deg,#201008 0%,#2A1810 100%);">
+              <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--gold);">B</span>
+              <div class="team-avatar-links">
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3v2H7v14h14v-7h2v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h8zm7 0V8h-2V5.414l-9.293 9.293-1.414-1.414L17.586 4H15V2h6v1z"/></svg>Portfolio</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Bianca May Golloher</h3>
+              <p class="team-role">Producer, Concept</p>
             </div>
           </div>
-        </div>
 
-        <!-- Taylor Kim -->
-        <div class="team-card team-card-sound">
-          <div class="team-avatar" style="background:linear-gradient(160deg,#0A1820 0%,#081A20 100%);">
-            <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--gold);">T</span>
-          </div>
-          <div class="team-info">
-            <h3>Taylor Kim</h3>
-            <p class="team-role">Sound &amp; Composer</p>
-            <p style="font-size:0.82rem;color:var(--muted);margin-top:0.75rem;line-height:1.6;">Crafts the sonic identity of Neon Steel — from the rain on concrete to the score that shifts with every decision you make.</p>
-            <div style="margin-top:1rem;display:flex;gap:0.5rem;flex-wrap:wrap;">
-              <span style="font-family:var(--f-ui);font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.25rem 0.6rem;border:1px solid var(--border);color:var(--faint);">Synth</span>
-              <span style="font-family:var(--f-ui);font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.25rem 0.6rem;border:1px solid var(--border);color:var(--faint);">SFX</span>
-              <span style="font-family:var(--f-ui);font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.25rem 0.6rem;border:1px solid var(--border);color:var(--faint);">FMOD</span>
+          <!-- Brayden Dawe -->
+          <div class="team-card team-card-art">
+            <div class="team-avatar" style="background:linear-gradient(160deg,#180A08 0%,#220E0A 100%);">
+              <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--crimson);">B</span>
+              <div class="team-avatar-links">
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3v2H7v14h14v-7h2v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h8zm7 0V8h-2V5.414l-9.293 9.293-1.414-1.414L17.586 4H15V2h6v1z"/></svg>Portfolio</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Brayden Dawe</h3>
             </div>
           </div>
-        </div>
 
+          <!-- Cleber Machado -->
+          <div class="team-card team-card-art">
+            <div class="team-avatar" style="background:linear-gradient(160deg,#1C0C0A 0%,#260E08 100%);">
+              <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--crimson);">C</span>
+              <div class="team-avatar-links">
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3v2H7v14h14v-7h2v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h8zm7 0V8h-2V5.414l-9.293 9.293-1.414-1.414L17.586 4H15V2h6v1z"/></svg>Portfolio</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Cleber Machado</h3>
+            </div>
+          </div>
+
+          <!-- Damon Schmitke -->
+          <div class="team-card team-card-art">
+            <div class="team-avatar" style="background:linear-gradient(160deg,#200A12 0%,#2C0E18 100%);">
+              <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--crimson);">D</span>
+              <div class="team-avatar-links">
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3v2H7v14h14v-7h2v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h8zm7 0V8h-2V5.414l-9.293 9.293-1.414-1.414L17.586 4H15V2h6v1z"/></svg>Portfolio</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Damon Schmitke</h3>
+            </div>
+          </div>
+
+          <!-- Joel Rocha Trancoso -->
+          <div class="team-card team-card-art">
+            <div class="team-avatar" style="background:linear-gradient(160deg,#1A0A08 0%,#241210 100%);">
+              <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--crimson);">J</span>
+              <div class="team-avatar-links">
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3v2H7v14h14v-7h2v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h8zm7 0V8h-2V5.414l-9.293 9.293-1.414-1.414L17.586 4H15V2h6v1z"/></svg>Portfolio</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Joel Rocha Trancoso</h3>
+            </div>
+          </div>
+
+          <!-- Josh Maggiacomo -->
+          <div class="team-card team-card-art">
+            <div class="team-avatar" style="background:linear-gradient(160deg,#1E0C0E 0%,#280E12 100%);">
+              <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--crimson);">J</span>
+              <div class="team-avatar-links">
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3v2H7v14h14v-7h2v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h8zm7 0V8h-2V5.414l-9.293 9.293-1.414-1.414L17.586 4H15V2h6v1z"/></svg>Portfolio</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Josh Maggiacomo</h3>
+            </div>
+          </div>
+
+          <!-- Ryn Raposo -->
+          <div class="team-card team-card-art">
+            <div class="team-avatar" style="background:linear-gradient(160deg,#1C0818 0%,#260A22 100%);">
+              <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--neon-p);">R</span>
+              <div class="team-avatar-links">
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3v2H7v14h14v-7h2v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h8zm7 0V8h-2V5.414l-9.293 9.293-1.414-1.414L17.586 4H15V2h6v1z"/></svg>Portfolio</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Ryn Raposo</h3>
+            </div>
+          </div>
+
+          <!-- Tyler Woodman -->
+          <div class="team-card team-card-art">
+            <div class="team-avatar" style="background:linear-gradient(160deg,#1A0C0A 0%,#241410 100%);">
+              <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--crimson);">T</span>
+              <div class="team-avatar-links">
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3v2H7v14h14v-7h2v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h8zm7 0V8h-2V5.414l-9.293 9.293-1.414-1.414L17.586 4H15V2h6v1z"/></svg>Portfolio</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Tyler Woodman</h3>
+            </div>
+          </div>
+
+        </div>
       </div>
+
+      <!-- Dev Team -->
+      <div>
+        <p class="label reveal" style="margin-bottom:2rem; color:var(--neon-c);">Development</p>
+        <div class="team-grid-20 stagger reveal">
+
+          <!-- Arian Shahrabi -->
+          <div class="team-card team-card-dev">
+            <div class="team-avatar" style="background:linear-gradient(160deg,#081428 0%,#0A1C38 100%);">
+              <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--neon-c);">A</span>
+              <div class="team-avatar-links">
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3v2H7v14h14v-7h2v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h8zm7 0V8h-2V5.414l-9.293 9.293-1.414-1.414L17.586 4H15V2h6v1z"/></svg>Portfolio</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Arian Shahrabi</h3>
+              <p class="team-role">Producer</p>
+            </div>
+          </div>
+
+          <!-- Alexander Anderson -->
+          <div class="team-card team-card-dev">
+            <div class="team-avatar" style="background:linear-gradient(160deg,#061020 0%,#081828 100%);">
+              <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--neon-c);">A</span>
+              <div class="team-avatar-links">
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3v2H7v14h14v-7h2v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h8zm7 0V8h-2V5.414l-9.293 9.293-1.414-1.414L17.586 4H15V2h6v1z"/></svg>Portfolio</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Alexander Anderson</h3>
+            </div>
+          </div>
+
+          <!-- Brandon Marshall -->
+          <div class="team-card team-card-dev">
+            <div class="team-avatar" style="background:linear-gradient(160deg,#081628 0%,#0C1E32 100%);">
+              <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--neon-c);">B</span>
+              <div class="team-avatar-links">
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3v2H7v14h14v-7h2v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h8zm7 0V8h-2V5.414l-9.293 9.293-1.414-1.414L17.586 4H15V2h6v1z"/></svg>Portfolio</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Brandon Marshall</h3>
+              <p class="team-role">Technical Developer, Systems Architect</p>
+            </div>
+          </div>
+
+          <!-- Chikit Chung -->
+          <div class="team-card team-card-dev">
+            <div class="team-avatar" style="background:linear-gradient(160deg,#071220 0%,#0A1828 100%);">
+              <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--neon-c);">C</span>
+              <div class="team-avatar-links">
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3v2H7v14h14v-7h2v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h8zm7 0V8h-2V5.414l-9.293 9.293-1.414-1.414L17.586 4H15V2h6v1z"/></svg>Portfolio</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Chikit Chung</h3>
+            </div>
+          </div>
+
+          <!-- Ethan Ticar -->
+          <div class="team-card team-card-dev">
+            <div class="team-avatar" style="background:linear-gradient(160deg,#081A20 0%,#0A2228 100%);">
+              <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--neon-c);">E</span>
+              <div class="team-avatar-links">
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3v2H7v14h14v-7h2v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h8zm7 0V8h-2V5.414l-9.293 9.293-1.414-1.414L17.586 4H15V2h6v1z"/></svg>Portfolio</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Ethan Ticar</h3>
+              <p class="team-role">Game Director, Programmer</p>
+            </div>
+          </div>
+
+          <!-- Henrique Mondadori -->
+          <div class="team-card team-card-dev">
+            <div class="team-avatar" style="background:linear-gradient(160deg,#061828 0%,#082030 100%);">
+              <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--neon-c);">H</span>
+              <div class="team-avatar-links">
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3v2H7v14h14v-7h2v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h8zm7 0V8h-2V5.414l-9.293 9.293-1.414-1.414L17.586 4H15V2h6v1z"/></svg>Portfolio</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Henrique Mondadori</h3>
+            </div>
+          </div>
+
+          <!-- Jake Zivontsis -->
+          <div class="team-card team-card-dev">
+            <div class="team-avatar" style="background:linear-gradient(160deg,#081020 0%,#0A1828 100%);">
+              <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--neon-c);">J</span>
+              <div class="team-avatar-links">
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3v2H7v14h14v-7h2v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h8zm7 0V8h-2V5.414l-9.293 9.293-1.414-1.414L17.586 4H15V2h6v1z"/></svg>Portfolio</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Jake Zivontsis</h3>
+              <p class="team-role">Audio Engineer, Gameplay Programmer</p>
+            </div>
+          </div>
+
+          <!-- Noah McPherson -->
+          <div class="team-card team-card-dev">
+            <div class="team-avatar" style="background:linear-gradient(160deg,#071422 0%,#091C2C 100%);">
+              <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--neon-c);">N</span>
+              <div class="team-avatar-links">
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3v2H7v14h14v-7h2v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h8zm7 0V8h-2V5.414l-9.293 9.293-1.414-1.414L17.586 4H15V2h6v1z"/></svg>Portfolio</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Noah McPherson</h3>
+            </div>
+          </div>
+
+          <!-- Pavly Riad -->
+          <div class="team-card team-card-dev">
+            <div class="team-avatar" style="background:linear-gradient(160deg,#081220 0%,#0A1A2A 100%);">
+              <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--neon-c);">P</span>
+              <div class="team-avatar-links">
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3v2H7v14h14v-7h2v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h8zm7 0V8h-2V5.414l-9.293 9.293-1.414-1.414L17.586 4H15V2h6v1z"/></svg>Portfolio</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Pavly Riad</h3>
+            </div>
+          </div>
+
+          <!-- Raymond Ayache -->
+          <div class="team-card team-card-dev">
+            <div class="team-avatar" style="background:linear-gradient(160deg,#061020 0%,#081826 100%);">
+              <span class="team-avatar-letter" style="-webkit-text-stroke-color:var(--neon-c);">R</span>
+              <div class="team-avatar-links">
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+                <a href="#" class="team-avatar-link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3v2H7v14h14v-7h2v8a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h8zm7 0V8h-2V5.414l-9.293 9.293-1.414-1.414L17.586 4H15V2h6v1z"/></svg>Portfolio</a>
+              </div>
+            </div>
+            <div class="team-info">
+              <h3>Raymond Ayache</h3>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -396,8 +686,6 @@
       </div>
       <nav class="footer-nav" aria-label="Footer navigation">
         <a href="../home/">Home</a>
-        <span class="f-sep">|</span>
-        <a href="../games/">Games</a>
         <span class="f-sep">|</span>
         <a href="../neon-steel/">Neon Steel</a>
         <span class="f-sep">|</span>
