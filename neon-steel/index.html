@@ -236,11 +236,10 @@
 <div class="ns-badges">
 <span class="ns-badge">2.5D Action Brawler</span>
 <span class="ns-badge">PC</span>
-<span class="ns-badge">2.5D</span>
 <span class="ns-badge">Cyberpunk</span>
 <span class="ns-badge">In Development</span>
 </div>
-<div class="ns-hero-actions" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+<div class="ns-hero-actions" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:4rem;">
 <a class="btn btn-neon" href="https://bloodfeatherstudios.itch.io/neon-steel" rel="noopener noreferrer" target="_blank">View on Itch.io</a>
 <a class="btn btn-ghost" href="#overview">Learn More</a>
 </div>
@@ -313,142 +312,24 @@
 </div>
 <!-- Right: screens + atmosphere -->
 <div class="reveal reveal-right">
-<!-- Main screen placeholder -->
-<div style="
-            aspect-ratio:16/10;
-            background:linear-gradient(135deg,#0A0718,#0D1228,#0A0D22);
-            border:1px solid var(--border-l);
-            position:relative; overflow:hidden;
-            display:flex; align-items:center; justify-content:center;
-            margin-bottom:1rem;
-          ">
-<!-- Inline game screenshot illustration -->
-<svg fill="none" height="100%" preserveAspectRatio="xMidYMid slice" viewBox="0 0 560 350" width="100%">
-<defs>
-<radialGradient cx="50%" cy="100%" id="floor-g" r="60%">
-<stop offset="0%" stop-color="#00E5FF" stop-opacity="0.08"></stop>
-<stop offset="100%" stop-color="transparent"></stop>
-</radialGradient>
-<filter id="glow-f">
-<feGaussianBlur result="blur" stdDeviation="3"></feGaussianBlur>
-<feMerge><feMergenode in="blur"></feMergenode><feMergenode in="SourceGraphic"></feMergenode></feMerge>
-</filter>
-</defs>
-<!-- Floor grid -->
-<rect fill="#05050F" height="350" width="560"></rect>
-<line opacity="0.12" stroke="#00E5FF" stroke-width="0.5" x1="0" x2="560" y1="200" y2="200"></line>
-<line opacity="0.08" stroke="#00E5FF" stroke-width="0.5" x1="0" x2="560" y1="240" y2="240"></line>
-<line opacity="0.05" stroke="#00E5FF" stroke-width="0.5" x1="0" x2="560" y1="280" y2="280"></line>
-<line opacity="0.1" stroke="#00E5FF" stroke-width="0.5" x1="140" x2="140" y1="175" y2="350"></line>
-<line opacity="0.1" stroke="#00E5FF" stroke-width="0.5" x1="280" x2="280" y1="175" y2="350"></line>
-<line opacity="0.1" stroke="#00E5FF" stroke-width="0.5" x1="420" x2="420" y1="175" y2="350"></line>
-<!-- Background city -->
-<rect fill="#0D0D28" height="140" opacity="0.9" width="40" x="0" y="60"></rect>
-<rect fill="#0A0A25" height="170" opacity="0.9" width="55" x="45" y="30"></rect>
-<rect fill="#0D0D28" height="150" opacity="0.9" width="45" x="105" y="50"></rect>
-<rect fill="#080820" height="190" opacity="0.9" width="70" x="155" y="10"></rect>
-<rect fill="#0D0D28" height="160" opacity="0.9" width="55" x="230" y="40"></rect>
-<rect fill="#0A0A25" height="180" opacity="0.9" width="65" x="290" y="20"></rect>
-<rect fill="#0D0D28" height="150" opacity="0.9" width="50" x="360" y="50"></rect>
-<rect fill="#080820" height="185" opacity="0.9" width="75" x="415" y="15"></rect>
-<rect fill="#0D0D28" height="155" opacity="0.9" width="65" x="495" y="45"></rect>
-<!-- Neon signs -->
-<rect fill="#00E5FF" filter="url(#glow-f)" height="3" opacity="0.7" width="30" x="55" y="55"></rect>
-<rect fill="#A855F7" filter="url(#glow-f)" height="3" opacity="0.7" width="35" x="165" y="30"></rect>
-<rect fill="#00E5FF" filter="url(#glow-f)" height="3" opacity="0.8" width="28" x="295" y="40"></rect>
-<rect fill="#E0253F" filter="url(#glow-f)" height="3" opacity="0.7" width="40" x="420" y="35"></rect>
-<!-- Floor glow -->
-<rect fill="url(#floor-g)" height="350" width="560"></rect>
-<!-- Character (top-down silhouette) -->
-<ellipse cx="280" cy="230" fill="#E0E0E0" opacity="0.9" rx="12" ry="8"></ellipse>
-<ellipse cx="280" cy="220" fill="#C8C8D0" rx="7" ry="7"></ellipse>
-<!-- Character weapon glow -->
-<line filter="url(#glow-f)" opacity="0.7" stroke="#00E5FF" stroke-width="2" x1="286" x2="310" y1="218" y2="205"></line>
-<!-- Shadow -->
-<ellipse cx="280" cy="238" fill="black" opacity="0.4" rx="14" ry="4"></ellipse>
-<!-- Enemies -->
-<ellipse cx="160" cy="190" fill="#C0392B" opacity="0.8" rx="9" ry="6"></ellipse>
-<ellipse cx="160" cy="183" fill="#8B2020" rx="5" ry="5"></ellipse>
-<ellipse cx="390" cy="195" fill="#C0392B" opacity="0.8" rx="9" ry="6"></ellipse>
-<ellipse cx="390" cy="188" fill="#8B2020" rx="5" ry="5"></ellipse>
-<!-- HUD elements -->
-<rect fill="#2A2A3A" height="6" rx="1" width="100" x="15" y="15"></rect>
-<rect fill="#E0253F" height="6" opacity="0.8" rx="1" width="62" x="15" y="15"></rect>
-<rect fill="#2A2A3A" height="4" rx="1" width="80" x="15" y="26"></rect>
-<rect fill="#00E5FF" height="4" opacity="0.7" rx="1" width="55" x="15" y="26"></rect>
-<text fill="#00E5FF" font-family="monospace" font-size="8" opacity="0.6" x="15" y="42">KADE ITO · THE DOCKS</text>
-<!-- Minimap -->
-<rect fill="#0A0A1A" height="45" rx="1" stroke="#2A2A4A" stroke-width="1" width="55" x="490" y="15"></rect>
-<rect fill="#00E5FF" height="4" opacity="0.9" width="4" x="518" y="33"></rect>
-<rect fill="#E0253F" height="3" opacity="0.6" width="3" x="502" y="28"></rect>
-<rect fill="#E0253F" height="3" opacity="0.6" width="3" x="528" y="40"></rect>
-</svg>
-<span style="position:absolute;bottom:0.75rem;left:1rem;font-family:var(--f-ui);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,229,255,0.4);">Gameplay · In-Engine</span>
+<!-- Main screen -->
+<div style="aspect-ratio:16/10;border:1px solid var(--border-l);position:relative;overflow:hidden;margin-bottom:1rem;">
+<img src="../assets/ns-environment.png" alt="Neon Steel — In-Engine Environment" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+<span style="position:absolute;bottom:0.75rem;left:1rem;font-family:var(--f-ui);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,229,255,0.4);">Environment · In-Engine</span>
 </div>
 <!-- Three small screens -->
 <div class="ns-screens" style="grid-template-columns:repeat(3,1fr);">
-<div class="ns-screen" style="background:linear-gradient(135deg,#100828,#0A1020);">
-<!-- Character portrait placeholder -->
-<svg fill="none" height="100%" preserveAspectRatio="xMidYMid slice" viewBox="0 0 180 113" width="100%">
-<rect fill="#0A0520" height="113" width="180"></rect>
-<ellipse cx="90" cy="95" fill="#1A0A30" opacity="0.8" rx="50" ry="30"></ellipse>
-<ellipse cx="90" cy="55" fill="#C8C8D0" opacity="0.7" rx="22" ry="26"></ellipse>
-<rect fill="#1A1A3A" height="35" opacity="0.8" width="44" x="68" y="75"></rect>
-<rect fill="#00E5FF" height="3" opacity="0.9" rx="1" width="5" x="78" y="50"></rect>
-<rect fill="#00E5FF" height="3" opacity="0.9" rx="1" width="5" x="97" y="50"></rect>
-<text fill="#A855F7" font-family="monospace" font-size="6" letter-spacing="2" opacity="0.7" text-anchor="middle" x="90" y="108">KADE ITO · DOCKS WORKER</text>
-</svg>
+<div class="ns-screen">
+<img src="../assets/coworker2-turntable.png" alt="Neon Steel — Character Design" style="width:100%;height:100%;object-fit:cover;display:block;"/>
 <span class="ns-screen-placeholder" style="position:absolute;bottom:0.5rem;left:0.5rem;font-size:0.5rem;">Character</span>
 </div>
-<div class="ns-screen" style="background:linear-gradient(135deg,#0A1820,#05101A);">
-<!-- Map placeholder -->
-<svg fill="none" height="100%" preserveAspectRatio="xMidYMid slice" viewBox="0 0 180 113" width="100%">
-<rect fill="#050F18" height="113" width="180"></rect>
-<!-- Street grid -->
-<line opacity="0.25" stroke="#00E5FF" stroke-width="0.8" x1="60" x2="60" y1="0" y2="113"></line>
-<line opacity="0.25" stroke="#00E5FF" stroke-width="0.8" x1="120" x2="120" y1="0" y2="113"></line>
-<line opacity="0.25" stroke="#00E5FF" stroke-width="0.8" x1="0" x2="180" y1="40" y2="40"></line>
-<line opacity="0.25" stroke="#00E5FF" stroke-width="0.8" x1="0" x2="180" y1="80" y2="80"></line>
-<!-- Blocks -->
-<rect fill="#0D1A2A" height="30" opacity="0.8" width="50" x="5" y="5"></rect>
-<rect fill="#0D1A2A" height="30" opacity="0.8" width="50" x="65" y="5"></rect>
-<rect fill="#0D1A2A" height="30" opacity="0.8" width="50" x="125" y="5"></rect>
-<rect fill="#0D1A2A" height="30" opacity="0.8" width="50" x="5" y="45"></rect>
-<rect fill="#0D1A2A" height="30" opacity="0.7" width="50" x="65" y="45"></rect>
-<rect fill="#0D1A2A" height="25" opacity="0.8" width="50" x="5" y="85"></rect>
-<rect fill="#0D1A2A" height="25" opacity="0.8" width="50" x="65" y="85"></rect>
-<rect fill="#0D1A2A" height="25" opacity="0.8" width="50" x="125" y="85"></rect>
-<!-- Player dot -->
-<circle cx="90" cy="60" fill="#00E5FF" opacity="0.9" r="4"></circle>
-<circle cx="90" cy="60" fill="#00E5FF" opacity="0.15" r="8"></circle>
-<!-- Enemy dots -->
-<circle cx="40" cy="25" fill="#E0253F" opacity="0.7" r="2.5"></circle>
-<circle cx="145" cy="55" fill="#E0253F" opacity="0.7" r="2.5"></circle>
-<text fill="#00E5FF" font-family="monospace" font-size="5" letter-spacing="2" opacity="0.5" text-anchor="middle" x="90" y="108">THE DOCKS · SECTOR 1</text>
-</svg>
-<span class="ns-screen-placeholder" style="position:absolute;bottom:0.5rem;left:0.5rem;font-size:0.5rem;">Map</span>
+<div class="ns-screen">
+<img src="../assets/mecha-turntable.png" alt="Neon Steel — Mecha Design" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+<span class="ns-screen-placeholder" style="position:absolute;bottom:0.5rem;left:0.5rem;font-size:0.5rem;">Mecha</span>
 </div>
-<div class="ns-screen" style="background:linear-gradient(135deg,#200818,#150510);">
-<!-- Dialogue placeholder -->
-<svg fill="none" height="100%" preserveAspectRatio="xMidYMid slice" viewBox="0 0 180 113" width="100%">
-<rect fill="#100510" height="113" width="180"></rect>
-<!-- Portrait box -->
-<rect fill="#1A0820" height="60" stroke="#3D1A40" stroke-width="0.5" width="50" x="5" y="5"></rect>
-<ellipse cx="30" cy="25" fill="#C0A090" opacity="0.6" rx="12" ry="14"></ellipse>
-<rect fill="#2A1030" height="25" opacity="0.7" width="24" x="18" y="36"></rect>
-<text fill="#A855F7" font-family="monospace" font-size="5" letter-spacing="1" opacity="0.8" text-anchor="middle" x="30" y="75">RYO</text>
-<!-- Dialogue text lines -->
-<rect fill="#8A7A70" height="3" opacity="0.4" rx="1" width="115" x="60" y="10"></rect>
-<rect fill="#8A7A70" height="3" opacity="0.4" rx="1" width="100" x="60" y="17"></rect>
-<rect fill="#8A7A70" height="3" opacity="0.4" rx="1" width="110" x="60" y="24"></rect>
-<rect fill="#8A7A70" height="3" opacity="0.4" rx="1" width="85" x="60" y="31"></rect>
-<!-- Choice options -->
-<rect fill="#1A0820" height="12" rx="1" stroke="#A855F7" stroke-width="0.5" width="170" x="5" y="80"></rect>
-<rect fill="#0A0510" height="12" rx="1" stroke="#3D1A40" stroke-width="0.5" width="170" x="5" y="96"></rect>
-<text fill="#E0A83C" font-family="monospace" font-size="5" opacity="0.8" x="15" y="89">&gt; Find Ryo before they do</text>
-<text fill="#8A7A70" font-family="monospace" font-size="5" opacity="0.6" x="15" y="105">  I'll handle this myself.</text>
-</svg>
-<span class="ns-screen-placeholder" style="position:absolute;bottom:0.5rem;left:0.5rem;font-size:0.5rem;">Dialogue</span>
+<div class="ns-screen">
+<img src="../assets/mantis-breakdown.png" alt="Neon Steel — Mantis Enemy Breakdown" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+<span class="ns-screen-placeholder" style="position:absolute;bottom:0.5rem;left:0.5rem;font-size:0.5rem;">Enemy</span>
 </div>
 </div>
 </div>
@@ -507,65 +388,30 @@
 <div class="media-gallery-grid reveal">
 <!-- Featured large frame -->
 <div class="media-frame media-frame-lg">
-<div class="media-frame-inner">
-<svg class="media-frame-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 24 24">
-<rect height="14" rx="1" width="20" x="2" y="6"></rect>
-<circle cx="12" cy="13" r="3"></circle>
-<path d="M8 6V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1"></path>
-</svg>
-<span class="media-frame-label">Screenshot Coming Soon</span>
-</div>
-<span class="media-frame-tag">Gameplay · In-Engine</span>
+<img src="../assets/ns-bg1.png" alt="Neon Steel — The Docks environment" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+<span class="media-frame-tag">Environment · In-Engine</span>
 <span class="media-frame-num">01</span>
 </div>
 <!-- Medium side frame -->
 <div class="media-frame media-frame-md">
-<div class="media-frame-inner">
-<svg class="media-frame-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 24 24">
-<rect height="14" rx="1" width="20" x="2" y="6"></rect>
-<circle cx="12" cy="13" r="3"></circle>
-<path d="M8 6V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1"></path>
-</svg>
-<span class="media-frame-label">Coming Soon</span>
-</div>
+<img src="../assets/mecha-posed.png" alt="Neon Steel — Mecha Key Art" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
 <span class="media-frame-tag">Key Art</span>
 <span class="media-frame-num">02</span>
 </div>
 <!-- Bottom row: 3 thumbnails -->
 <div class="media-gallery-bottom">
 <div class="media-frame media-frame-sm">
-<div class="media-frame-inner">
-<svg class="media-frame-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 24 24">
-<rect height="14" rx="1" width="20" x="2" y="6"></rect>
-<circle cx="12" cy="13" r="3"></circle>
-<path d="M8 6V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1"></path>
-</svg>
-<span class="media-frame-label">Coming Soon</span>
-</div>
+<img src="../assets/ns-bg2.png" alt="Neon Steel — Docks environment" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
 <span class="media-frame-tag">Environment</span>
 <span class="media-frame-num">03</span>
 </div>
 <div class="media-frame media-frame-sm">
-<div class="media-frame-inner">
-<svg class="media-frame-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 24 24">
-<rect height="14" rx="1" width="20" x="2" y="6"></rect>
-<circle cx="12" cy="13" r="3"></circle>
-<path d="M8 6V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1"></path>
-</svg>
-<span class="media-frame-label">Coming Soon</span>
-</div>
-<span class="media-frame-tag">Combat</span>
+<img src="../assets/mantis-hero.png" alt="Neon Steel — Mantis Enforcer" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
+<span class="media-frame-tag">Enemy Design</span>
 <span class="media-frame-num">04</span>
 </div>
 <div class="media-frame media-frame-sm">
-<div class="media-frame-inner">
-<svg class="media-frame-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 24 24">
-<rect height="14" rx="1" width="20" x="2" y="6"></rect>
-<circle cx="12" cy="13" r="3"></circle>
-<path d="M8 6V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1"></path>
-</svg>
-<span class="media-frame-label">Coming Soon</span>
-</div>
+<img src="../assets/kade-turntable.png" alt="Neon Steel — Kade Ito character model" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"/>
 <span class="media-frame-tag">Character</span>
 <span class="media-frame-num">05</span>
 </div>

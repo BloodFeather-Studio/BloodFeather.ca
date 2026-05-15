@@ -56,7 +56,7 @@ body {
   background: var(--void);
   color: var(--ivory);
   font-family: var(--f-body);
-  font-size: clamp(16px, 1.05vw, 19px);
+  font-size: clamp(18px, 1.35vw, 22px);
   line-height: 1.78;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -926,7 +926,7 @@ footer::after {
   color: transparent;
 }
 .team-info { padding: 1.25rem; }
-.team-info h3 { font-size: 0.9rem; color: var(--ivory); margin-bottom: 0.3rem; }
+.team-info h3 { font-size: 1.05rem; color: var(--ivory); margin-bottom: 0.3rem; }
 .team-role {
   font-family: var(--f-ui); font-size: 0.62rem;
   letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);
@@ -1327,9 +1327,9 @@ footer::after {
 .ns-logo-wrap::before {
   content: '';
   position: absolute;
-  inset: 15% 10%;
-  background: radial-gradient(circle at center, rgba(0,229,255,0.18), rgba(168,85,247,0.08), transparent 62%);
-  filter: blur(22px);
+  inset: 10% 5%;
+  background: radial-gradient(circle at center, rgba(0,229,255,0.2), rgba(168,85,247,0.1), transparent 62%);
+  filter: blur(28px);
 }
 .ns-logo {
   position: relative;
@@ -1338,8 +1338,8 @@ footer::after {
   width: min(760px, 92vw);
   height: auto;
   margin: 0 auto;
-  filter: drop-shadow(0 0 14px rgba(0,229,255,0.48)) drop-shadow(0 0 48px rgba(168,85,247,0.24));
-  animation: neonPulse 4.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px rgba(0,229,255,0.55)) drop-shadow(0 0 40px rgba(0,229,255,0.28)) drop-shadow(0 0 65px rgba(168,85,247,0.22));
+  animation: neonFlicker 6s ease-in-out infinite;
 }
 .ns-overview-text p { color: var(--ivory-2); }
 
@@ -1370,9 +1370,15 @@ footer::after {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
 }
-@keyframes neonPulse {
-  0%, 100% { filter: drop-shadow(0 0 14px rgba(0,229,255,0.42)) drop-shadow(0 0 48px rgba(168,85,247,0.22)); }
-  50% { filter: drop-shadow(0 0 22px rgba(0,229,255,0.62)) drop-shadow(0 0 70px rgba(168,85,247,0.34)); }
+@keyframes neonFlicker {
+  0%        { filter: drop-shadow(0 0 12px rgba(0,229,255,0.55)) drop-shadow(0 0 40px rgba(0,229,255,0.28))  drop-shadow(0 0 65px rgba(168,85,247,0.22)); opacity: 1; }
+  45%       { filter: drop-shadow(0 0 18px rgba(0,229,255,0.72)) drop-shadow(0 0 55px rgba(0,229,255,0.38)) drop-shadow(0 0 85px rgba(168,85,247,0.32)); opacity: 1; }
+  50%       { filter: drop-shadow(0 0 8px  rgba(0,229,255,0.3))  drop-shadow(0 0 22px rgba(0,229,255,0.15))  drop-shadow(0 0 38px rgba(168,85,247,0.1)); opacity: 0.78; }
+  51%       { filter: drop-shadow(0 0 18px rgba(0,229,255,0.72)) drop-shadow(0 0 55px rgba(0,229,255,0.38)) drop-shadow(0 0 85px rgba(168,85,247,0.32)); opacity: 1; }
+  75%       { filter: drop-shadow(0 0 12px rgba(0,229,255,0.55)) drop-shadow(0 0 40px rgba(0,229,255,0.28))  drop-shadow(0 0 65px rgba(168,85,247,0.22)); opacity: 1; }
+  76%       { filter: drop-shadow(0 0 6px  rgba(0,229,255,0.25)) drop-shadow(0 0 18px rgba(0,229,255,0.12)) drop-shadow(0 0 30px rgba(168,85,247,0.08)); opacity: 0.82; }
+  77%       { filter: drop-shadow(0 0 15px rgba(0,229,255,0.62)) drop-shadow(0 0 48px rgba(0,229,255,0.32)) drop-shadow(0 0 75px rgba(168,85,247,0.28)); opacity: 1; }
+  100%      { filter: drop-shadow(0 0 12px rgba(0,229,255,0.55)) drop-shadow(0 0 40px rgba(0,229,255,0.28))  drop-shadow(0 0 65px rgba(168,85,247,0.22)); opacity: 1; }
 }
 
 @media (max-width: 1024px) {

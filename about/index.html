@@ -144,19 +144,25 @@
 <!-- PAGE HERO -->
 <div class="page-hero" style="min-height:50vh;">
 <div class="page-hero-bg" style="background:radial-gradient(ellipse at 70% 50%,rgba(191,30,55,0.1) 0%,transparent 60%);"></div>
-<!-- Large feather watermark -->
-<div style="position:absolute;right:-5%;top:0;bottom:0;width:40vw;max-width:500px;opacity:0.04;pointer-events:none;display:flex;align-items:center;">
-<svg fill="none" viewBox="0 0 200 320">
-<path d="M100 4C65 35 20 90 22 165C24 218 58 300 100 316C142 300 176 218 178 165C180 90 135 35 100 4Z" fill="#EDE0CA"></path>
-<line stroke="#C9913A" stroke-linecap="round" stroke-width="2" x1="100" x2="100" y1="4" y2="316"></line>
-<line opacity="0.5" stroke="#C9913A" stroke-linecap="round" stroke-width="1.5" x1="100" x2="48" y1="60" y2="95"></line>
-<line opacity="0.5" stroke="#C9913A" stroke-linecap="round" stroke-width="1.5" x1="100" x2="36" y1="90" y2="128"></line>
-<line opacity="0.5" stroke="#C9913A" stroke-linecap="round" stroke-width="1.5" x1="100" x2="28" y1="120" y2="162"></line>
-<line opacity="0.4" stroke="#C9913A" stroke-linecap="round" stroke-width="1.5" x1="100" x2="26" y1="150" y2="194"></line>
-<line opacity="0.5" stroke="#C9913A" stroke-linecap="round" stroke-width="1.5" x1="100" x2="152" y1="60" y2="95"></line>
-<line opacity="0.5" stroke="#C9913A" stroke-linecap="round" stroke-width="1.5" x1="100" x2="164" y1="90" y2="128"></line>
-<line opacity="0.5" stroke="#C9913A" stroke-linecap="round" stroke-width="1.5" x1="100" x2="172" y1="120" y2="162"></line>
-<line opacity="0.4" stroke="#C9913A" stroke-linecap="round" stroke-width="1.5" x1="100" x2="174" y1="150" y2="194"></line>
+<!-- Geometric grid watermark -->
+<div style="position:absolute;right:0;top:0;bottom:0;width:50vw;max-width:600px;pointer-events:none;overflow:hidden;opacity:0.12;">
+<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern id="diamond-grid" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+<rect width="48" height="48" fill="none"/>
+<line x1="24" y1="0" x2="24" y2="48" stroke="#BF1E37" stroke-width="0.5"/>
+<line x1="0" y1="24" x2="48" y2="24" stroke="#BF1E37" stroke-width="0.5"/>
+</pattern>
+<linearGradient id="grid-fade" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0%" stop-color="white" stop-opacity="0"/>
+<stop offset="40%" stop-color="white" stop-opacity="1"/>
+<stop offset="100%" stop-color="white" stop-opacity="1"/>
+</linearGradient>
+<mask id="grid-mask">
+<rect width="100%" height="100%" fill="url(#grid-fade)"/>
+</mask>
+</defs>
+<rect width="100%" height="100%" fill="url(#diamond-grid)" mask="url(#grid-mask)"/>
 </svg>
 </div>
 <div class="page-hero-content">
@@ -178,30 +184,8 @@
 <a class="btn btn-ghost" href="../neon-steel/" style="margin-top:1rem;">See Our Game →</a>
 </div>
 <div class="about-visual reveal reveal-right">
-<!-- Rotating emblem with feather -->
-<div style="position:relative;width:100%;display:flex;align-items:center;justify-content:center;padding:3rem 0;">
-<div class="about-emblem">
-<div class="about-emblem-inner">
-<svg fill="none" height="190" viewBox="0 0 36 58" width="120">
-<defs><linearGradient gradientUnits="userSpaceOnUse" id="fg-emb" x1="18" x2="18" y1="0" y2="58"><stop stop-color="#E0253F"></stop><stop offset="1" stop-color="#6B0E1E" stop-opacity="0.3"></stop></linearGradient></defs>
-<path d="M18 2C10 13 3 30 4 44C5 52 12 56 18 57C24 56 31 52 32 44C33 30 26 13 18 2Z" fill="url(#fg-emb)"></path>
-<line stroke="#C9913A" stroke-linecap="round" stroke-width="0.8" x1="18" x2="18" y1="2" y2="57"></line>
-<line opacity="0.5" stroke="#C9913A" stroke-linecap="round" stroke-width="0.5" x1="18" x2="7" y1="18" y2="27"></line>
-<line opacity="0.5" stroke="#C9913A" stroke-linecap="round" stroke-width="0.5" x1="18" x2="5" y1="27" y2="36"></line>
-<line opacity="0.5" stroke="#C9913A" stroke-linecap="round" stroke-width="0.5" x1="18" x2="6" y1="36" y2="44"></line>
-<line opacity="0.5" stroke="#C9913A" stroke-linecap="round" stroke-width="0.5" x1="18" x2="29" y1="18" y2="27"></line>
-<line opacity="0.5" stroke="#C9913A" stroke-linecap="round" stroke-width="0.5" x1="18" x2="31" y1="27" y2="36"></line>
-<line opacity="0.5" stroke="#C9913A" stroke-linecap="round" stroke-width="0.5" x1="18" x2="30" y1="36" y2="44"></line>
-</svg>
-</div>
-</div>
-<!-- Outer ring with text (static) -->
-<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
-<svg fill="none" height="360" style="opacity:0.25;" viewBox="0 0 360 360" width="360">
-<circle cx="180" cy="180" r="172" stroke="var(--border)" stroke-width="1"></circle>
-<circle cx="180" cy="180" r="155" stroke="var(--crimson-gl)" stroke-dasharray="4 8" stroke-width="0.5"></circle>
-</svg>
-</div>
+<div style="width:100%;display:flex;align-items:center;justify-content:center;padding:3rem 0;">
+<img src="../assets/bloodfeather-logo.png" alt="BloodFeather Studios" style="width:min(520px,100%);height:auto;filter:drop-shadow(0 0 24px rgba(191,30,55,0.3));"/>
 </div>
 </div>
 </div>
@@ -255,7 +239,6 @@
     <div class="section-header reveal">
       <p class="label">The People</p>
       <h2>Meet the team.</h2>
-      <p>Ordered by project responsibility, presented as one studio. Different disciplines, one production.</p>
     </div>
     <div class="team-grid-20 team-grid-seniority stagger reveal">
       <div class="team-card">
@@ -270,7 +253,7 @@
   <div class="team-info">
     <h3>Arian Shahrabi</h3>
     <p class="team-role">Executive Producer, UI/UX Designer & Developer</p>
-    <p class="team-blurb">Producer by title, problem-solver by nature. I keep the team on course and the interface clean and intentional.</p>
+
   </div>
 </div>
 <div class="team-card">
@@ -285,7 +268,7 @@
   <div class="team-info">
     <h3>Ethan Ticar</h3>
     <p class="team-role">Game Director & Programmer</p>
-    <p class="team-blurb">I steer the ship on vision, scope, and execution. Also I write a lot of code. The director who gets in the trenches.</p>
+
   </div>
 </div>
 <div class="team-card">
@@ -293,13 +276,13 @@
     <img src="../assets/bloodfeather-logo.png" alt="" class="team-avatar-logo"/>
     <span class="team-avatar-letter">A</span>
     <div class="team-avatar-links" aria-label="External links for Alice Bell">
-      <span class="team-avatar-link team-avatar-link-disabled" title="Links coming soon">+</span>
+      <a class="team-avatar-link" href="https://www.linkedin.com/in/alice-bell-1b92b7340/" target="_blank" rel="noopener noreferrer" aria-label="Alice Bell LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.54V9H7.1v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z"/></svg></a>
     </div>
   </div>
   <div class="team-info">
     <h3>Alice Bell</h3>
     <p class="team-role">Art & Creative Director</p>
-    <p class="team-blurb">Obsessed with atmosphere and visual storytelling. I make sure every frame feels like a place you've already been to in a dream.</p>
+
   </div>
 </div>
 <div class="team-card">
@@ -307,13 +290,13 @@
     <img src="../assets/bloodfeather-logo.png" alt="" class="team-avatar-logo"/>
     <span class="team-avatar-letter">B</span>
     <div class="team-avatar-links" aria-label="External links for Brandon Marshall">
-      <span class="team-avatar-link team-avatar-link-disabled" title="Links coming soon">+</span>
+      <a class="team-avatar-link" href="https://www.linkedin.com/in/brandon-marshall96/" target="_blank" rel="noopener noreferrer" aria-label="Brandon Marshall LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.54V9H7.1v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z"/></svg></a>
     </div>
   </div>
   <div class="team-info">
     <h3>Brandon Marshall</h3>
     <p class="team-role">Technical Developer, Systems Architect</p>
-    <p class="team-blurb">I architect the foundations everything runs on. Complex, interconnected systems that hold the whole game together.</p>
+
   </div>
 </div>
 <div class="team-card">
@@ -321,27 +304,13 @@
     <img src="../assets/bloodfeather-logo.png" alt="" class="team-avatar-logo"/>
     <span class="team-avatar-letter">B</span>
     <div class="team-avatar-links" aria-label="External links for Bianca May Golloher">
-      <span class="team-avatar-link team-avatar-link-disabled" title="Links coming soon">+</span>
+      <a class="team-avatar-link" href="https://www.linkedin.com/in/biancamay-golloher-b2184b324/" target="_blank" rel="noopener noreferrer" aria-label="Bianca May Golloher LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.54V9H7.1v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z"/></svg></a>
     </div>
   </div>
   <div class="team-info">
     <h3>Bianca May Golloher</h3>
     <p class="team-role">Producer & Concept Artist</p>
-    <p class="team-blurb">Half organizer, half artist. I keep the team moving and the concepts sharp so the vision never gets lost in the process.</p>
-  </div>
-</div>
-<div class="team-card">
-  <div class="team-avatar studio-avatar">
-    <img src="../assets/bloodfeather-logo.png" alt="" class="team-avatar-logo"/>
-    <span class="team-avatar-letter">C</span>
-    <div class="team-avatar-links" aria-label="External links for Chikit Chung">
-      <span class="team-avatar-link team-avatar-link-disabled" title="Links coming soon">+</span>
-    </div>
-  </div>
-  <div class="team-info">
-    <h3>Chikit Chung</h3>
-    <p class="team-role">Game Designer, Marketing Lead</p>
-    <p class="team-blurb">Half designer, half hype. I build the systems players interact with and make sure the world knows Neon Steel exists.</p>
+
   </div>
 </div>
 <div class="team-card">
@@ -349,13 +318,28 @@
     <img src="../assets/bloodfeather-logo.png" alt="" class="team-avatar-logo"/>
     <span class="team-avatar-letter">C</span>
     <div class="team-avatar-links" aria-label="External links for Cleber Machado">
-      <span class="team-avatar-link team-avatar-link-disabled" title="Links coming soon">+</span>
+      <a class="team-avatar-link" href="https://www.linkedin.com/in/clebermachadocm/" target="_blank" rel="noopener noreferrer" aria-label="Cleber Machado LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.54V9H7.1v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z"/></svg></a>
     </div>
   </div>
   <div class="team-info">
     <h3>Cleber Machado</h3>
     <p class="team-role">Lead 3D Modeler & 3D Character Artist</p>
-    <p class="team-blurb">Every polygon has a purpose. I turn concepts into characters and make sure they feel real up close.</p>
+
+  </div>
+</div>
+<div class="team-card">
+  <div class="team-avatar studio-avatar">
+    <img src="../assets/bloodfeather-logo.png" alt="" class="team-avatar-logo"/>
+    <span class="team-avatar-letter">C</span>
+    <div class="team-avatar-links" aria-label="External links for Chikit Chung">
+      <a class="team-avatar-link" href="https://chikit.ca/" target="_blank" rel="noopener noreferrer" aria-label="Chikit Chung website" title="Website"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.9 9h-3.18a15.67 15.67 0 0 0-1.12-5.18A8.04 8.04 0 0 1 18.9 11ZM12 4.04c.86 1.25 1.55 3.05 1.75 5.96h-3.5c.2-2.91.89-4.71 1.75-5.96ZM4.26 13h3.18c.13 1.95.52 3.72 1.12 5.18A8.04 8.04 0 0 1 4.26 13Zm3.18-2H4.26a8.04 8.04 0 0 1 4.3-5.18A15.67 15.67 0 0 0 7.44 11ZM12 19.96c-.86-1.25-1.55-3.05-1.75-5.96h3.5c-.2 2.91-.89 4.71-1.75 5.96Zm2.6-1.78c.6-1.46.99-3.23 1.12-5.18h3.18a8.04 8.04 0 0 1-4.3 5.18Z"/></svg></a>
+      <a class="team-avatar-link" href="https://www.linkedin.com/in/phillip-chung-2ba51883/" target="_blank" rel="noopener noreferrer" aria-label="Chikit Chung LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.54V9H7.1v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z"/></svg></a>
+    </div>
+  </div>
+  <div class="team-info">
+    <h3>Chikit Chung</h3>
+    <p class="team-role">Game Designer, Marketing Lead</p>
+
   </div>
 </div>
 <div class="team-card">
@@ -363,13 +347,13 @@
     <img src="../assets/bloodfeather-logo.png" alt="" class="team-avatar-logo"/>
     <span class="team-avatar-letter">J</span>
     <div class="team-avatar-links" aria-label="External links for Jake Zivontsis">
-      <span class="team-avatar-link team-avatar-link-disabled" title="Links coming soon">+</span>
+      <a class="team-avatar-link" href="https://www.linkedin.com/in/jake-zivontsis/" target="_blank" rel="noopener noreferrer" aria-label="Jake Zivontsis LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.54V9H7.1v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z"/></svg></a>
     </div>
   </div>
   <div class="team-info">
     <h3>Jake Zivontsis</h3>
     <p class="team-role">Audio Engineer, Gameplay Programmer</p>
-    <p class="team-blurb">I make Neon Steel sound like a real place — street ambience, combat crunch, and a score that knows when to hit hard.</p>
+
   </div>
 </div>
 <div class="team-card">
@@ -383,7 +367,21 @@
   <div class="team-info">
     <h3>Noah McPherson</h3>
     <p class="team-role">Technical Level Designer, Programmer</p>
-    <p class="team-blurb">I build the levels from a technical lens. Flow, collision, performance — the spaces Kade fights through are mine.</p>
+
+  </div>
+</div>
+<div class="team-card">
+  <div class="team-avatar studio-avatar">
+    <img src="../assets/bloodfeather-logo.png" alt="" class="team-avatar-logo"/>
+    <span class="team-avatar-letter">R</span>
+    <div class="team-avatar-links" aria-label="External links for Ryn Raposo">
+      <span class="team-avatar-link team-avatar-link-disabled" title="Links coming soon">+</span>
+    </div>
+  </div>
+  <div class="team-info">
+    <h3>Ryn Raposo</h3>
+    <p class="team-role">Concept Artist & Level Designer</p>
+
   </div>
 </div>
 <div class="team-card">
@@ -397,49 +395,7 @@
   <div class="team-info">
     <h3>Raymond Ayache</h3>
     <p class="team-role">Gameplay Programmer, Systems Designer</p>
-    <p class="team-blurb">I program how the game feels to play. Combat systems, player response, and the feedback loops that make it satisfying.</p>
-  </div>
-</div>
-<div class="team-card">
-  <div class="team-avatar studio-avatar">
-    <img src="../assets/bloodfeather-logo.png" alt="" class="team-avatar-logo"/>
-    <span class="team-avatar-letter">A</span>
-    <div class="team-avatar-links" aria-label="External links for Alexander Anderson">
-      <span class="team-avatar-link team-avatar-link-disabled" title="Links coming soon">+</span>
-    </div>
-  </div>
-  <div class="team-info">
-    <h3>Alexander Anderson</h3>
-    <p class="team-role">UI/UX Programmer</p>
-    <p class="team-blurb">I build the systems players actually touch. Good UI is invisible — you shouldn't have to think about it.</p>
-  </div>
-</div>
-<div class="team-card">
-  <div class="team-avatar studio-avatar">
-    <img src="../assets/bloodfeather-logo.png" alt="" class="team-avatar-logo"/>
-    <span class="team-avatar-letter">A</span>
-    <div class="team-avatar-links" aria-label="External links for Aria Charktab Moghadam">
-      <span class="team-avatar-link team-avatar-link-disabled" title="Links coming soon">+</span>
-    </div>
-  </div>
-  <div class="team-info">
-    <h3>Aria Charktab Moghadam</h3>
-    <p class="team-role">3D Prop & Weapon Artist</p>
-    <p class="team-blurb">I bring the world's tools and weapons to life. If Kade can hold it, swing it, or shoot it — I built it.</p>
-  </div>
-</div>
-<div class="team-card">
-  <div class="team-avatar studio-avatar">
-    <img src="../assets/bloodfeather-logo.png" alt="" class="team-avatar-logo"/>
-    <span class="team-avatar-letter">B</span>
-    <div class="team-avatar-links" aria-label="External links for Brayden Dawe">
-      <span class="team-avatar-link team-avatar-link-disabled" title="Links coming soon">+</span>
-    </div>
-  </div>
-  <div class="team-info">
-    <h3>Brayden Dawe</h3>
-    <p class="team-role">3D & VFX Artist</p>
-    <p class="team-blurb">If something explodes, crackles with Neon, or leaves a mark on screen — that's probably me.</p>
+
   </div>
 </div>
 <div class="team-card">
@@ -447,27 +403,55 @@
     <img src="../assets/bloodfeather-logo.png" alt="" class="team-avatar-logo"/>
     <span class="team-avatar-letter">J</span>
     <div class="team-avatar-links" aria-label="External links for Joel Rocha Trancoso">
-      <span class="team-avatar-link team-avatar-link-disabled" title="Links coming soon">+</span>
+      <a class="team-avatar-link" href="https://www.linkedin.com/in/joel-trancoso/" target="_blank" rel="noopener noreferrer" aria-label="Joel Rocha Trancoso LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.54V9H7.1v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z"/></svg></a>
     </div>
   </div>
   <div class="team-info">
     <h3>Joel Rocha Trancoso</h3>
     <p class="team-role">Narrative & Rigging</p>
-    <p class="team-blurb">I give the story its bones — literally. Narrative structure and rigging, making sure everything moves with weight and intention.</p>
+
   </div>
 </div>
 <div class="team-card">
   <div class="team-avatar studio-avatar">
     <img src="../assets/bloodfeather-logo.png" alt="" class="team-avatar-logo"/>
-    <span class="team-avatar-letter">R</span>
-    <div class="team-avatar-links" aria-label="External links for Ryn Raposo">
-      <span class="team-avatar-link team-avatar-link-disabled" title="Links coming soon">+</span>
+    <span class="team-avatar-letter">A</span>
+    <div class="team-avatar-links" aria-label="External links for Alexander Anderson">
+      <a class="team-avatar-link" href="https://www.linkedin.com/in/alexander-anderson-74615a222/" target="_blank" rel="noopener noreferrer" aria-label="Alexander Anderson LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.54V9H7.1v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z"/></svg></a>
     </div>
   </div>
   <div class="team-info">
-    <h3>Ryn Raposo</h3>
-    <p class="team-role">Concept Artist</p>
-    <p class="team-blurb">I live in the space between concept and finished art, helping define how this world looks before it's fully real.</p>
+    <h3>Alexander Anderson</h3>
+    <p class="team-role">UI/UX Programmer</p>
+
+  </div>
+</div>
+<div class="team-card">
+  <div class="team-avatar studio-avatar">
+    <img src="../assets/bloodfeather-logo.png" alt="" class="team-avatar-logo"/>
+    <span class="team-avatar-letter">A</span>
+    <div class="team-avatar-links" aria-label="External links for Aria Charktab Moghadam">
+      <a class="team-avatar-link" href="https://www.linkedin.com/in/yasnacm/" target="_blank" rel="noopener noreferrer" aria-label="Aria Charktab Moghadam LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.54V9H7.1v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z"/></svg></a>
+    </div>
+  </div>
+  <div class="team-info">
+    <h3>Aria Charktab Moghadam</h3>
+    <p class="team-role">3D Prop & Weapon Artist</p>
+
+  </div>
+</div>
+<div class="team-card">
+  <div class="team-avatar studio-avatar">
+    <img src="../assets/bloodfeather-logo.png" alt="" class="team-avatar-logo"/>
+    <span class="team-avatar-letter">B</span>
+    <div class="team-avatar-links" aria-label="External links for Brayden Dawe">
+      <a class="team-avatar-link" href="https://www.linkedin.com/in/braydendawe-503542230/" target="_blank" rel="noopener noreferrer" aria-label="Brayden Dawe LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.54V9H7.1v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z"/></svg></a>
+    </div>
+  </div>
+  <div class="team-info">
+    <h3>Brayden Dawe</h3>
+    <p class="team-role">3D & VFX Artist</p>
+
   </div>
 </div>
 <div class="team-card">
@@ -481,7 +465,7 @@
   <div class="team-info">
     <h3>Tyler Woodman</h3>
     <p class="team-role">3D Modeller</p>
-    <p class="team-blurb">I model the city Kade runs through. Buildings, streets, debris — the world's bones are mine to shape.</p>
+
   </div>
 </div>
 <div class="team-card">
@@ -495,7 +479,7 @@
   <div class="team-info">
     <h3>Damon Schmitke</h3>
     <p class="team-role">3D Artist</p>
-    <p class="team-blurb">Part of the team building Neon Steel's visual world — gritty, neon-soaked, and unmistakably alive.</p>
+
   </div>
 </div>
 <div class="team-card">
@@ -509,7 +493,7 @@
   <div class="team-info">
     <h3>Josh Maggiacomo</h3>
     <p class="team-role">3D Artist</p>
-    <p class="team-blurb">The world doesn't build itself. I contribute to the visual identity of Neon Steel, one asset at a time.</p>
+
   </div>
 </div>
 <div class="team-card">
@@ -523,7 +507,7 @@
   <div class="team-info">
     <h3>Henrique Mondadori</h3>
     <p class="team-role">Programmer</p>
-    <p class="team-blurb">I write the code that makes the game function. Clean systems, no shortcuts, and a quiet determination to get it right.</p>
+
   </div>
 </div>
 <div class="team-card">
@@ -537,7 +521,7 @@
   <div class="team-info">
     <h3>Pavly Riad</h3>
     <p class="team-role">Programmer</p>
-    <p class="team-blurb">Reliable, precise, and quietly essential. I work in the engine making sure everything runs exactly as it should.</p>
+
   </div>
 </div>
     </div>
@@ -565,7 +549,7 @@
         <div class="timeline-line"></div>
         <details class="timeline-card">
           <summary><span>Production leadership is set</span><em>View details</em></summary>
-          <p>Arian Shahrabi was voted in as executive producer, giving the project a defined production lead for scope, scheduling, team communication, and external-facing presentation.</p>
+          <p>Leadership roles were assigned across the team — executive producer, game director, art director, and department leads — giving the project a defined structure for scope, scheduling, and production accountability.</p>
         </details>
       </div>
       <div class="timeline-item">
