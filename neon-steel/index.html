@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Neon Steel — BloodFeather Studios</title><meta content="Neon Steel is a single-player 2.5D action brawler set in a dystopian city powered by Neon. Play as Kade Ito and fight through crews, enforcers, and the powers above." name="description"/><meta content="#050307" name="theme-color"/><link href="https://bloodfeather.ca/neon-steel/" rel="canonical"/><link href="../assets/favicon.svg" rel="icon" type="image/svg+xml"/><meta content="website" property="og:type"/><meta content="BloodFeather Studios" property="og:site_name"/><meta content="Neon Steel — BloodFeather Studios" property="og:title"/><meta content="Neon Steel is a single-player 2.5D action brawler set in a dystopian city powered by Neon. Play as Kade Ito and fight through crews, enforcers, and the powers above." property="og:description"/><meta content="https://bloodfeather.ca/neon-steel/" property="og:url"/><meta content="https://bloodfeather.ca/assets/bloodfeather-og.png" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><meta content="Neon Steel — BloodFeather Studios" name="twitter:title"/><meta content="Neon Steel is a single-player 2.5D action brawler set in a dystopian city powered by Neon. Play as Kade Ito and fight through crews, enforcers, and the powers above." name="twitter:description"/><meta content="https://bloodfeather.ca/assets/bloodfeather-og.png" name="twitter:image"/>
+<link href="../styles.css" rel="stylesheet"/>
+<style>
+    .ns-hero-content .label { animation: fadeUp 0.7s var(--ease-out) 0.2s both; }
+    .ns-title               { animation: fadeUp 0.9s var(--ease-out) 0.4s both; }
+    .ns-tagline             { animation: fadeUp 0.8s var(--ease-out) 0.6s both; }
+    .ns-badges              { animation: fadeUp 0.8s var(--ease-out) 0.72s both; }
+    .ns-hero-actions        { animation: fadeUp 0.8s var(--ease-out) 0.85s both; }
+
+    /* scanline effect on screens */
+    .ns-screen::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px, transparent 3px,
+        rgba(0,229,255,0.015) 3px, rgba(0,229,255,0.015) 4px
+      );
+      pointer-events: none;
+    }
+
+    /* neon text flicker */
+    @keyframes flicker {
+      0%,100%{ opacity:1 }
+      92%    { opacity:1 }
+      93%    { opacity:0.4 }
+      94%    { opacity:1 }
+      96%    { opacity:0.6 }
+      97%    { opacity:1 }
+    }
+    .ns-title .neon { animation: flicker 8s ease-in-out infinite; }
+
+    /* ── Media Gallery ───────────────────────────────────── */
+    .media-gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 0.6rem;
+    }
+    .media-gallery-bottom {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+    }
+    .media-frame {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #07060F 0%, #0A0D1C 100%);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color var(--t2), box-shadow var(--t2);
+    }
+    .media-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .media-frame:hover {
+      border-color: rgba(0,229,255,0.4);
+      box-shadow: 0 0 24px rgba(0,229,255,0.06), inset 0 0 24px rgba(0,229,255,0.03);
+    }
+    .media-frame-lg { aspect-ratio: 16 / 9; }
+    .media-frame-md { aspect-ratio: 4 / 3; }
+    .media-frame-sm { aspect-ratio: 16 / 9; }
+    .media-frame-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      opacity: 0.35;
+      transition: opacity var(--t2);
+    }
+    .media-frame:hover .media-frame-inner { opacity: 0.55; }
+    .media-frame-icon {
+      width: 32px; height: 32px;
+      color: var(--neon-c);
+    }
+    .media-frame-label {
+      font-family: var(--f-ui);
+      font-size: 0.52rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--neon-c);
+    }
+    .media-frame-tag {
+      position: absolute;
+      bottom: 0.75rem;
+      left: 0.75rem;
+      font-family: var(--f-ui);
+      font-size: 0.5rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(0,229,255,0.4);
+      z-index: 2;
+    }
+    .media-frame-num {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      font-family: var(--f-display);
+      font-size: 0.65rem;
+      color: rgba(0,229,255,0.2);
+      z-index: 2;
+    }
+    @media (max-width: 768px) {
+      .media-gallery-grid { grid-template-columns: 1fr; }
+      .media-frame-md { aspect-ratio: 16 / 9; }
+      .media-gallery-bottom { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .media-gallery-bottom { grid-template-columns: 1fr; }
+    }
+
+    /* stat counter style */
+    .ns-stat-block {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 0;
+      border: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+    .ns-stat {
+      padding: 2rem 1.5rem;
+      border-right: 1px solid var(--border);
+      text-align: center;
+    }
+    .ns-stat:last-child { border-right: none; }
+    .ns-stat-num {
+      font-family: var(--f-display);
+      font-size: 2.2rem; line-height: 1;
+      color: var(--neon-c);
+      text-shadow: 0 0 20px rgba(0,229,255,0.4);
+      display: block; margin-bottom: 0.4rem;
+    }
+    .ns-stat-label {
+      font-family: var(--f-ui); font-size: 0.62rem;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--faint);
+    }
+
+    @media (max-width: 640px) {
+      .ns-stat-block { grid-template-columns: 1fr 1fr; }
+      .ns-stat:nth-child(2) { border-right: none; }
+      .ns-stat:nth-child(1),
+      .ns-stat:nth-child(2) { border-bottom: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body class="page-load"><a class="skip-link" href="#main-content">Skip to content</a>
+<!-- NAV -->
+<nav aria-label="Primary navigation" class="nav">
+  <a class="nav-logo nav-logo-image" href="../" aria-label="BloodFeather Studios home">
+    <img src="../assets/bloodfeather-logo.png" alt="BloodFeather Studios" class="nav-logo-img"/>
+  </a>
+  <ul class="nav-links">
+    <li><a class="active" href="../neon-steel/">Neon Steel</a></li><li><a class="" href="../about/">About</a></li><li><a class="" href="../contact/">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="../contact/#follow-development">Follow Development</a>
+  <button aria-controls="mobile-navigation" aria-expanded="false" aria-label="Menu" class="hamburger" type="button"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="mobile-navigation">
+  <a href="../">Home</a>
+  <a href="../neon-steel/">Neon Steel</a><a href="../about/">About</a><a href="../contact/">Contact</a>
+</div>
+<!-- ── HERO ─────────────────────────────────────────── -->
+<section class="ns-hero" id="main-content">
+<div class="ns-bg"></div>
+<div class="ns-grid-overlay"></div>
+<div class="ns-glow-c"></div>
+<div class="ns-glow-p"></div>
+<!-- City skyline SVG backdrop -->
+<div style="position:absolute;inset:0;pointer-events:none;overflow:hidden;">
+<svg preserveAspectRatio="xMidYMax slice" style="position:absolute;bottom:0;left:0;width:100%;opacity:0.18;" viewBox="0 0 1440 500">
+<defs>
+<linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#00E5FF" stop-opacity="0"></stop>
+<stop offset="100%" stop-color="#00E5FF" stop-opacity="0.12"></stop>
+</linearGradient>
+</defs>
+<!-- Buildings -->
+<rect fill="#0A0A2A" height="280" width="60" x="0" y="220"></rect>
+<rect fill="#08082A" height="340" width="80" x="65" y="160"></rect>
+<rect fill="#0A0A2A" height="300" width="50" x="150" y="200"></rect>
+<rect fill="#06062A" height="380" width="100" x="205" y="120"></rect>
+<rect fill="#0A0A2A" height="320" width="70" x="310" y="180"></rect>
+<rect fill="#08082A" height="360" width="90" x="385" y="140"></rect>
+<rect fill="#05052A" height="400" width="120" x="480" y="100"></rect>
+<rect fill="#0A0A2A" height="340" width="80" x="605" y="160"></rect>
+<rect fill="#06062A" height="420" width="100" x="690" y="80"></rect>
+<rect fill="#0A0A2A" height="360" width="90" x="795" y="140"></rect>
+<rect fill="#08082A" height="390" width="110" x="890" y="110"></rect>
+<rect fill="#0A0A2A" height="330" width="70" x="1005" y="170"></rect>
+<rect fill="#06062A" height="370" width="90" x="1080" y="130"></rect>
+<rect fill="#0A0A2A" height="310" width="60" x="1175" y="190"></rect>
+<rect fill="#08082A" height="350" width="80" x="1240" y="150"></rect>
+<rect fill="#0A0A2A" height="300" width="115" x="1325" y="200"></rect>
+<!-- Window lights -->
+<rect fill="#00E5FF" height="4" opacity="0.7" width="6" x="80" y="175"></rect>
+<rect fill="#A855F7" height="4" opacity="0.6" width="5" x="95" y="195"></rect>
+<rect fill="#00E5FF" height="4" opacity="0.8" width="8" x="220" y="135"></rect>
+<rect fill="#00E5FF" height="4" opacity="0.5" width="6" x="238" y="155"></rect>
+<rect fill="#A855F7" height="4" opacity="0.7" width="5" x="260" y="145"></rect>
+<rect fill="#00E5FF" height="4" opacity="0.6" width="7" x="395" y="155"></rect>
+<rect fill="#A855F7" height="4" opacity="0.5" width="5" x="415" y="175"></rect>
+<rect fill="#00E5FF" height="4" opacity="0.9" width="9" x="495" y="115"></rect>
+<rect fill="#00E5FF" height="4" opacity="0.6" width="7" x="515" y="135"></rect>
+<rect fill="#A855F7" height="4" opacity="0.7" width="5" x="540" y="125"></rect>
+<rect fill="#00E5FF" height="4" opacity="0.9" width="8" x="707" y="95"></rect>
+<rect fill="#00E5FF" height="4" opacity="0.7" width="6" x="722" y="115"></rect>
+<rect fill="#A855F7" height="4" opacity="0.6" width="5" x="738" y="105"></rect>
+<rect fill="#00E5FF" height="4" opacity="0.8" width="8" x="900" y="125"></rect>
+<rect fill="#A855F7" height="4" opacity="0.5" width="6" x="918" y="145"></rect>
+<rect fill="#00E5FF" height="4" opacity="0.7" width="7" x="1088" y="145"></rect>
+<rect fill="#A855F7" height="4" opacity="0.6" width="5" x="1104" y="165"></rect>
+<!-- Ground glow -->
+<ellipse cx="720" cy="500" fill="url(#sky)" rx="600" ry="40"></ellipse>
+</svg>
+</div>
+<div class="ns-hero-content">
+<p class="label">BloodFeather Studios  ·  Published by 2Cent</p>
+<div class="ns-logo-wrap"><img src="../assets/neon-steel-logo.png" alt="Neon Steel" class="ns-logo"/></div>
+<p class="ns-tagline">A cinematic 2.5D action brawler about survival, pressure, and fighting through a city built to grind people down.</p>
+<div class="ns-badges">
+<span class="ns-badge">2.5D Action Brawler</span>
+<span class="ns-badge">PC</span>
+<span class="ns-badge">2.5D</span>
+<span class="ns-badge">Cyberpunk</span>
+<span class="ns-badge">In Development</span>
+</div>
+<div class="ns-hero-actions" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+<a class="btn btn-neon" href="https://bloodfeatherstudios.itch.io/neon-steel" rel="noopener noreferrer" target="_blank">View on Itch.io</a>
+<a class="btn btn-ghost" href="#overview">Learn More</a>
+</div>
+</div>
+<div class="hero-scroll" style="color:var(--neon-c);opacity:0.5;">
+<span style="color:var(--neon-c);">Scroll</span>
+<div class="hero-scroll-line" style="background:linear-gradient(to bottom,var(--neon-c),transparent);"></div>
+</div>
+</section>
+<!-- ── STATS ─────────────────────────────────────────── -->
+<div style="padding:0 clamp(1.5rem,5vw,4rem); background:var(--dark); border-bottom:1px solid var(--border);">
+<div class="container ns-stat-block">
+<div class="ns-stat reveal">
+<span class="ns-stat-num">20</span>
+<span class="ns-stat-label">Team Members</span>
+</div>
+<div class="ns-stat reveal">
+<span class="ns-stat-num">Jul '25</span>
+<span class="ns-stat-label">Production Since</span>
+</div>
+<div class="ns-stat reveal">
+<span class="ns-stat-num">Active</span>
+<span class="ns-stat-label">Development Status</span>
+</div>
+<div class="ns-stat reveal">
+<span class="ns-stat-num">4</span>
+<span class="ns-stat-label">Gameplay Pillars</span>
+</div>
+</div>
+</div>
+<!-- ── OVERVIEW ──────────────────────────────────────── -->
+<section class="ns-overview" id="overview">
+<div class="container">
+<div class="ns-overview-grid">
+<div class="ns-overview-text reveal reveal-left">
+<p class="label">The World</p>
+<h2>A city that chews you up and asks for more.</h2>
+<p>A dystopian futuristic city runs on Neon — a glowing energy source powering its batteries, machinery, and everyday life. You are Kade Ito, a gruff construction worker from the city's impoverished labor districts, whose life has been shaped by hard work, bad conditions, and keeping his head down.</p>
+<p>The game begins in the Docks, where Kade is caught in the fallout of his estranged twin brother Ryo's actions. Suddenly forced to run from his own crew, the authorities, and the people controlling the city from above — what starts as a desperate escape becomes a fight to survive, uncover the truth, and reach Ryo before the city closes in around him.</p>
+<div class="ns-features">
+<div class="ns-feature">
+<div class="ns-feature-icon">⚔</div>
+<div>
+<h4>Expanding Arsenal</h4>
+<p>Start with hand-to-hand and grow into the sword, gun, and grappling hook — each one changing not just how you attack, but how you move and control a fight. Swap weapons mid-combo to chain devastating sequences on the fly.</p>
+</div>
+</div>
+<div class="ns-feature">
+<div class="ns-feature-icon">◈</div>
+<div>
+<h4>Neon Power System</h4>
+<p>Neon is the city's lifeblood — and Kade's fuel. Build it through aggression and sustained combos, then spend it on shields, special abilities, and a temporary mech state that enhances every weapon and unlocks devastating ultimate attacks.</p>
+</div>
+</div>
+<div class="ns-feature">
+<div class="ns-feature-icon">⬡</div>
+<div>
+<h4>Grappling Hook Traversal</h4>
+<p>Latch onto traversal points, swing across platforms, grab enemies, or hurl light objects as weapons. Destructible environments turn cover and set pieces into part of the action.</p>
+</div>
+</div>
+<div class="ns-feature">
+<div class="ns-feature-icon">✦</div>
+<div>
+<h4>Absorbed Enemy Abilities</h4>
+<p>Defeat major Mantis Enforcers to take their powers and add new situational tools to Kade's arsenal. Every boss you overcome makes you more dangerous than before.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: screens + atmosphere -->
+<div class="reveal reveal-right">
+<!-- Main screen placeholder -->
+<div style="
+            aspect-ratio:16/10;
+            background:linear-gradient(135deg,#0A0718,#0D1228,#0A0D22);
+            border:1px solid var(--border-l);
+            position:relative; overflow:hidden;
+            display:flex; align-items:center; justify-content:center;
+            margin-bottom:1rem;
+          ">
+<!-- Inline game screenshot illustration -->
+<svg fill="none" height="100%" preserveAspectRatio="xMidYMid slice" viewBox="0 0 560 350" width="100%">
+<defs>
+<radialGradient cx="50%" cy="100%" id="floor-g" r="60%">
+<stop offset="0%" stop-color="#00E5FF" stop-opacity="0.08"></stop>
+<stop offset="100%" stop-color="transparent"></stop>
+</radialGradient>
+<filter id="glow-f">
+<feGaussianBlur result="blur" stdDeviation="3"></feGaussianBlur>
+<feMerge><feMergenode in="blur"></feMergenode><feMergenode in="SourceGraphic"></feMergenode></feMerge>
+</filter>
+</defs>
+<!-- Floor grid -->
+<rect fill="#05050F" height="350" width="560"></rect>
+<line opacity="0.12" stroke="#00E5FF" stroke-width="0.5" x1="0" x2="560" y1="200" y2="200"></line>
+<line opacity="0.08" stroke="#00E5FF" stroke-width="0.5" x1="0" x2="560" y1="240" y2="240"></line>
+<line opacity="0.05" stroke="#00E5FF" stroke-width="0.5" x1="0" x2="560" y1="280" y2="280"></line>
+<line opacity="0.1" stroke="#00E5FF" stroke-width="0.5" x1="140" x2="140" y1="175" y2="350"></line>
+<line opacity="0.1" stroke="#00E5FF" stroke-width="0.5" x1="280" x2="280" y1="175" y2="350"></line>
+<line opacity="0.1" stroke="#00E5FF" stroke-width="0.5" x1="420" x2="420" y1="175" y2="350"></line>
+<!-- Background city -->
+<rect fill="#0D0D28" height="140" opacity="0.9" width="40" x="0" y="60"></rect>
+<rect fill="#0A0A25" height="170" opacity="0.9" width="55" x="45" y="30"></rect>
+<rect fill="#0D0D28" height="150" opacity="0.9" width="45" x="105" y="50"></rect>
+<rect fill="#080820" height="190" opacity="0.9" width="70" x="155" y="10"></rect>
+<rect fill="#0D0D28" height="160" opacity="0.9" width="55" x="230" y="40"></rect>
+<rect fill="#0A0A25" height="180" opacity="0.9" width="65" x="290" y="20"></rect>
+<rect fill="#0D0D28" height="150" opacity="0.9" width="50" x="360" y="50"></rect>
+<rect fill="#080820" height="185" opacity="0.9" width="75" x="415" y="15"></rect>
+<rect fill="#0D0D28" height="155" opacity="0.9" width="65" x="495" y="45"></rect>
+<!-- Neon signs -->
+<rect fill="#00E5FF" filter="url(#glow-f)" height="3" opacity="0.7" width="30" x="55" y="55"></rect>
+<rect fill="#A855F7" filter="url(#glow-f)" height="3" opacity="0.7" width="35" x="165" y="30"></rect>
+<rect fill="#00E5FF" filter="url(#glow-f)" height="3" opacity="0.8" width="28" x="295" y="40"></rect>
+<rect fill="#E0253F" filter="url(#glow-f)" height="3" opacity="0.7" width="40" x="420" y="35"></rect>
+<!-- Floor glow -->
+<rect fill="url(#floor-g)" height="350" width="560"></rect>
+<!-- Character (top-down silhouette) -->
+<ellipse cx="280" cy="230" fill="#E0E0E0" opacity="0.9" rx="12" ry="8"></ellipse>
+<ellipse cx="280" cy="220" fill="#C8C8D0" rx="7" ry="7"></ellipse>
+<!-- Character weapon glow -->
+<line filter="url(#glow-f)" opacity="0.7" stroke="#00E5FF" stroke-width="2" x1="286" x2="310" y1="218" y2="205"></line>
+<!-- Shadow -->
+<ellipse cx="280" cy="238" fill="black" opacity="0.4" rx="14" ry="4"></ellipse>
+<!-- Enemies -->
+<ellipse cx="160" cy="190" fill="#C0392B" opacity="0.8" rx="9" ry="6"></ellipse>
+<ellipse cx="160" cy="183" fill="#8B2020" rx="5" ry="5"></ellipse>
+<ellipse cx="390" cy="195" fill="#C0392B" opacity="0.8" rx="9" ry="6"></ellipse>
+<ellipse cx="390" cy="188" fill="#8B2020" rx="5" ry="5"></ellipse>
+<!-- HUD elements -->
+<rect fill="#2A2A3A" height="6" rx="1" width="100" x="15" y="15"></rect>
+<rect fill="#E0253F" height="6" opacity="0.8" rx="1" width="62" x="15" y="15"></rect>
+<rect fill="#2A2A3A" height="4" rx="1" width="80" x="15" y="26"></rect>
+<rect fill="#00E5FF" height="4" opacity="0.7" rx="1" width="55" x="15" y="26"></rect>
+<text fill="#00E5FF" font-family="monospace" font-size="8" opacity="0.6" x="15" y="42">KADE ITO · THE DOCKS</text>
+<!-- Minimap -->
+<rect fill="#0A0A1A" height="45" rx="1" stroke="#2A2A4A" stroke-width="1" width="55" x="490" y="15"></rect>
+<rect fill="#00E5FF" height="4" opacity="0.9" width="4" x="518" y="33"></rect>
+<rect fill="#E0253F" height="3" opacity="0.6" width="3" x="502" y="28"></rect>
+<rect fill="#E0253F" height="3" opacity="0.6" width="3" x="528" y="40"></rect>
+</svg>
+<span style="position:absolute;bottom:0.75rem;left:1rem;font-family:var(--f-ui);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,229,255,0.4);">Gameplay · In-Engine</span>
+</div>
+<!-- Three small screens -->
+<div class="ns-screens" style="grid-template-columns:repeat(3,1fr);">
+<div class="ns-screen" style="background:linear-gradient(135deg,#100828,#0A1020);">
+<!-- Character portrait placeholder -->
+<svg fill="none" height="100%" preserveAspectRatio="xMidYMid slice" viewBox="0 0 180 113" width="100%">
+<rect fill="#0A0520" height="113" width="180"></rect>
+<ellipse cx="90" cy="95" fill="#1A0A30" opacity="0.8" rx="50" ry="30"></ellipse>
+<ellipse cx="90" cy="55" fill="#C8C8D0" opacity="0.7" rx="22" ry="26"></ellipse>
+<rect fill="#1A1A3A" height="35" opacity="0.8" width="44" x="68" y="75"></rect>
+<rect fill="#00E5FF" height="3" opacity="0.9" rx="1" width="5" x="78" y="50"></rect>
+<rect fill="#00E5FF" height="3" opacity="0.9" rx="1" width="5" x="97" y="50"></rect>
+<text fill="#A855F7" font-family="monospace" font-size="6" letter-spacing="2" opacity="0.7" text-anchor="middle" x="90" y="108">KADE ITO · DOCKS WORKER</text>
+</svg>
+<span class="ns-screen-placeholder" style="position:absolute;bottom:0.5rem;left:0.5rem;font-size:0.5rem;">Character</span>
+</div>
+<div class="ns-screen" style="background:linear-gradient(135deg,#0A1820,#05101A);">
+<!-- Map placeholder -->
+<svg fill="none" height="100%" preserveAspectRatio="xMidYMid slice" viewBox="0 0 180 113" width="100%">
+<rect fill="#050F18" height="113" width="180"></rect>
+<!-- Street grid -->
+<line opacity="0.25" stroke="#00E5FF" stroke-width="0.8" x1="60" x2="60" y1="0" y2="113"></line>
+<line opacity="0.25" stroke="#00E5FF" stroke-width="0.8" x1="120" x2="120" y1="0" y2="113"></line>
+<line opacity="0.25" stroke="#00E5FF" stroke-width="0.8" x1="0" x2="180" y1="40" y2="40"></line>
+<line opacity="0.25" stroke="#00E5FF" stroke-width="0.8" x1="0" x2="180" y1="80" y2="80"></line>
+<!-- Blocks -->
+<rect fill="#0D1A2A" height="30" opacity="0.8" width="50" x="5" y="5"></rect>
+<rect fill="#0D1A2A" height="30" opacity="0.8" width="50" x="65" y="5"></rect>
+<rect fill="#0D1A2A" height="30" opacity="0.8" width="50" x="125" y="5"></rect>
+<rect fill="#0D1A2A" height="30" opacity="0.8" width="50" x="5" y="45"></rect>
+<rect fill="#0D1A2A" height="30" opacity="0.7" width="50" x="65" y="45"></rect>
+<rect fill="#0D1A2A" height="25" opacity="0.8" width="50" x="5" y="85"></rect>
+<rect fill="#0D1A2A" height="25" opacity="0.8" width="50" x="65" y="85"></rect>
+<rect fill="#0D1A2A" height="25" opacity="0.8" width="50" x="125" y="85"></rect>
+<!-- Player dot -->
+<circle cx="90" cy="60" fill="#00E5FF" opacity="0.9" r="4"></circle>
+<circle cx="90" cy="60" fill="#00E5FF" opacity="0.15" r="8"></circle>
+<!-- Enemy dots -->
+<circle cx="40" cy="25" fill="#E0253F" opacity="0.7" r="2.5"></circle>
+<circle cx="145" cy="55" fill="#E0253F" opacity="0.7" r="2.5"></circle>
+<text fill="#00E5FF" font-family="monospace" font-size="5" letter-spacing="2" opacity="0.5" text-anchor="middle" x="90" y="108">THE DOCKS · SECTOR 1</text>
+</svg>
+<span class="ns-screen-placeholder" style="position:absolute;bottom:0.5rem;left:0.5rem;font-size:0.5rem;">Map</span>
+</div>
+<div class="ns-screen" style="background:linear-gradient(135deg,#200818,#150510);">
+<!-- Dialogue placeholder -->
+<svg fill="none" height="100%" preserveAspectRatio="xMidYMid slice" viewBox="0 0 180 113" width="100%">
+<rect fill="#100510" height="113" width="180"></rect>
+<!-- Portrait box -->
+<rect fill="#1A0820" height="60" stroke="#3D1A40" stroke-width="0.5" width="50" x="5" y="5"></rect>
+<ellipse cx="30" cy="25" fill="#C0A090" opacity="0.6" rx="12" ry="14"></ellipse>
+<rect fill="#2A1030" height="25" opacity="0.7" width="24" x="18" y="36"></rect>
+<text fill="#A855F7" font-family="monospace" font-size="5" letter-spacing="1" opacity="0.8" text-anchor="middle" x="30" y="75">RYO</text>
+<!-- Dialogue text lines -->
+<rect fill="#8A7A70" height="3" opacity="0.4" rx="1" width="115" x="60" y="10"></rect>
+<rect fill="#8A7A70" height="3" opacity="0.4" rx="1" width="100" x="60" y="17"></rect>
+<rect fill="#8A7A70" height="3" opacity="0.4" rx="1" width="110" x="60" y="24"></rect>
+<rect fill="#8A7A70" height="3" opacity="0.4" rx="1" width="85" x="60" y="31"></rect>
+<!-- Choice options -->
+<rect fill="#1A0820" height="12" rx="1" stroke="#A855F7" stroke-width="0.5" width="170" x="5" y="80"></rect>
+<rect fill="#0A0510" height="12" rx="1" stroke="#3D1A40" stroke-width="0.5" width="170" x="5" y="96"></rect>
+<text fill="#E0A83C" font-family="monospace" font-size="5" opacity="0.8" x="15" y="89">&gt; Find Ryo before they do</text>
+<text fill="#8A7A70" font-family="monospace" font-size="5" opacity="0.6" x="15" y="105">  I'll handle this myself.</text>
+</svg>
+<span class="ns-screen-placeholder" style="position:absolute;bottom:0.5rem;left:0.5rem;font-size:0.5rem;">Dialogue</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ── STORY SECTION ─────────────────────────────────── -->
+<section style="padding:var(--sp) clamp(1.5rem,5vw,4rem); background:var(--void); border-top:1px solid var(--border);">
+<div class="container" style="max-width:var(--wrap);">
+<div style="display:grid; grid-template-columns:1fr 2fr; gap:5rem; align-items:start;">
+<div class="reveal reveal-left" style="position:sticky; top:8rem;">
+<p class="label" style="color:var(--neon-c); margin-bottom:1.5rem;">The Story</p>
+<h2 style="font-size:clamp(2rem,4vw,3rem); margin-bottom:1rem;">A city built to grind people down.</h2>
+<p style="color:var(--muted); font-style:italic; line-height:1.8;">Shipping containers turned into housing. Unsafe construction zones. Scrap piles and polluted streets — with corporate towers hanging over everything.</p>
+<div style="margin-top:2rem; padding:1.5rem; border:1px solid var(--border-l); background:var(--surface-s);">
+<p style="font-family:var(--f-ui); font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:0.75rem;">Publisher</p>
+<p style="font-family:var(--f-ui); font-size:0.85rem; color:var(--ivory-2);">2Cent</p>
+<p style="font-family:var(--f-ui); font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-top:1rem; margin-bottom:0.75rem;">Platform</p>
+<p style="font-family:var(--f-ui); font-size:0.85rem; color:var(--ivory-2);">PC</p>
+<p style="font-family:var(--f-ui); font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-top:1rem; margin-bottom:0.75rem;">Status</p>
+<p style="font-family:var(--f-ui); font-size:0.85rem; color:var(--neon-c);">In Active Development</p>
+</div>
+</div>
+<div class="reveal reveal-right">
+<div style="border-left:2px solid var(--border); padding-left:2.5rem; display:flex; flex-direction:column; gap:3rem;">
+<div>
+<p style="font-family:var(--f-ui); font-size:0.65rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--neon-c); margin-bottom:0.75rem;">Act I — The Fallout</p>
+<h3 style="font-size:1.2rem; color:var(--ivory); margin-bottom:0.75rem;">You didn't do anything wrong. That stopped mattering the moment Ryo did.</h3>
+<p style="color:var(--muted); line-height:1.85;">Kade Ito is a construction worker. Loyal, stubborn, and invisible — exactly the way the city likes its labor. When his estranged twin brother Ryo's actions catch up with both of them, Kade is suddenly running from his own crew, the authorities, and people he's never even met.</p>
+</div>
+<div>
+<p style="font-family:var(--f-ui); font-size:0.65rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--neon-c); margin-bottom:0.75rem;">Act II — The Run</p>
+<h3 style="font-size:1.2rem; color:var(--ivory); margin-bottom:0.75rem;">Ryo is the voice in your ear — and the reason the city wants you silenced.</h3>
+<p style="color:var(--muted); line-height:1.85;">Guiding Kade through the Docks and deeper into the city, Ryo becomes the thread connecting everything: why the city's ruling powers want the brothers silenced, and what Neon is really tied to. The story stays grounded in the working class side of this world — exploitation, survival, and the cost of staying alive somewhere built to grind you down.</p>
+</div>
+<div>
+<p style="font-family:var(--f-ui); font-size:0.65rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--neon-c); margin-bottom:0.75rem;">Act III — The Truth</p>
+<h3 style="font-size:1.2rem; color:var(--ivory); margin-bottom:0.75rem;">Reach Ryo before the city closes in around you.</h3>
+<p style="color:var(--muted); line-height:1.85;">What starts as a desperate escape becomes a fight to survive and uncover the truth. Kade is not a chosen hero or a trained soldier — he is a man who refused to disappear. That makes the hits harder, and the answers more costly.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ── MEDIA GALLERY ────────────────────────────────── -->
+<section style="padding:var(--sp) clamp(1.5rem,5vw,4rem); background:var(--dark); border-top:1px solid var(--border);">
+<div class="container" style="max-width:var(--wrap);">
+<div style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:1.5rem; margin-bottom:2.5rem;">
+<div>
+<p class="label reveal" style="margin-bottom:1rem; color:var(--neon-c);">Media</p>
+<h2 class="reveal" style="font-size:clamp(1.8rem,3.5vw,3rem);">Screenshots &amp; Artwork</h2>
+<p class="reveal" style="color:var(--muted); font-style:italic; margin-top:0.5rem; font-size:0.88rem;">Gameplay clips, screenshots, and concept art will be added as the media package is finalized.</p>
+</div>
+</div>
+<div class="media-gallery-grid reveal">
+<!-- Featured large frame -->
+<div class="media-frame media-frame-lg">
+<div class="media-frame-inner">
+<svg class="media-frame-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 24 24">
+<rect height="14" rx="1" width="20" x="2" y="6"></rect>
+<circle cx="12" cy="13" r="3"></circle>
+<path d="M8 6V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1"></path>
+</svg>
+<span class="media-frame-label">Screenshot Coming Soon</span>
+</div>
+<span class="media-frame-tag">Gameplay · In-Engine</span>
+<span class="media-frame-num">01</span>
+</div>
+<!-- Medium side frame -->
+<div class="media-frame media-frame-md">
+<div class="media-frame-inner">
+<svg class="media-frame-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 24 24">
+<rect height="14" rx="1" width="20" x="2" y="6"></rect>
+<circle cx="12" cy="13" r="3"></circle>
+<path d="M8 6V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1"></path>
+</svg>
+<span class="media-frame-label">Coming Soon</span>
+</div>
+<span class="media-frame-tag">Key Art</span>
+<span class="media-frame-num">02</span>
+</div>
+<!-- Bottom row: 3 thumbnails -->
+<div class="media-gallery-bottom">
+<div class="media-frame media-frame-sm">
+<div class="media-frame-inner">
+<svg class="media-frame-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 24 24">
+<rect height="14" rx="1" width="20" x="2" y="6"></rect>
+<circle cx="12" cy="13" r="3"></circle>
+<path d="M8 6V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1"></path>
+</svg>
+<span class="media-frame-label">Coming Soon</span>
+</div>
+<span class="media-frame-tag">Environment</span>
+<span class="media-frame-num">03</span>
+</div>
+<div class="media-frame media-frame-sm">
+<div class="media-frame-inner">
+<svg class="media-frame-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 24 24">
+<rect height="14" rx="1" width="20" x="2" y="6"></rect>
+<circle cx="12" cy="13" r="3"></circle>
+<path d="M8 6V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1"></path>
+</svg>
+<span class="media-frame-label">Coming Soon</span>
+</div>
+<span class="media-frame-tag">Combat</span>
+<span class="media-frame-num">04</span>
+</div>
+<div class="media-frame media-frame-sm">
+<div class="media-frame-inner">
+<svg class="media-frame-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 24 24">
+<rect height="14" rx="1" width="20" x="2" y="6"></rect>
+<circle cx="12" cy="13" r="3"></circle>
+<path d="M8 6V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v1"></path>
+</svg>
+<span class="media-frame-label">Coming Soon</span>
+</div>
+<span class="media-frame-tag">Character</span>
+<span class="media-frame-num">05</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ── CTA ───────────────────────────────────────────── -->
+<section style="padding:var(--sp) clamp(1.5rem,5vw,4rem); text-align:center; position:relative; overflow:hidden;">
+<div style="position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(0,229,255,0.06) 0%,transparent 65%);pointer-events:none;"></div>
+<div class="container" style="position:relative;">
+<p class="label reveal" style="justify-content:center; color:var(--neon-c); margin-bottom:1.25rem;">Stay in the Loop</p>
+<h2 class="reveal" style="font-size:clamp(2rem,4.5vw,3.5rem); margin-bottom:1rem;">Want to know when Neon Steel drops?</h2>
+<p class="reveal" style="color:var(--muted); font-style:italic; margin-bottom:2rem; max-width:44ch; margin-left:auto; margin-right:auto;">Follow us for development updates, screenshots, and the occasional 3am dev log.</p>
+<div class="reveal" style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+<a class="btn btn-neon" href="../contact/">Get Notified</a>
+<a class="btn btn-ghost" href="../">← Home</a>
+</div>
+</div>
+</section>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand-c footer-brand-logo">
+      <a aria-label="BloodFeather Studios home" href="../">
+        <img src="../assets/bloodfeather-logo.png" alt="BloodFeather Studios" class="footer-logo-img"/>
+      </a>
+    </div>
+    <div class="footer-divider"><div class="divider-gem"></div></div>
+    <div class="footer-socials">
+      <a aria-label="LinkedIn" class="social-icon-btn social-icon-text" href="https://ca.linkedin.com/company/bloodfeather-studio" rel="noopener noreferrer" target="_blank">in</a>
+<a aria-label="Instagram" class="social-icon-btn social-icon-text" href="https://www.instagram.com/bloodfeatherstudio/" rel="noopener noreferrer" target="_blank">ig</a>
+<a aria-label="YouTube" class="social-icon-btn social-icon-text" href="https://www.youtube.com/@BloodFeatherStudios" rel="noopener noreferrer" target="_blank">yt</a>
+<a aria-label="Itch.io" class="social-icon-btn social-icon-text" href="https://bloodfeatherstudios.itch.io/neon-steel" rel="noopener noreferrer" target="_blank">it</a>
+<a aria-label="Beacons" class="social-icon-btn social-icon-text" href="https://beacons.ai/bloodfeatherstudios" rel="noopener noreferrer" target="_blank">bf</a>
+    </div>
+    <nav aria-label="Footer navigation" class="footer-nav">
+      <a href="../">Home</a>
+      <span class="f-sep">|</span>
+      <a href="../neon-steel/">Neon Steel</a>
+      <span class="f-sep">|</span>
+      <a href="../about/">About</a>
+      <span class="f-sep">|</span>
+      <a href="../contact/">Contact</a>
+    </nav>
+    <div class="footer-bottom">
+      <span>© 2026 BloodFeather Studios — All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+<script src="../scripts.js"></script>
+</body>
+</html>

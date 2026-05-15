@@ -1,10 +1,201 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=BloodfeatherStudio%20Wireframe/home/" />
-  <script>window.location.replace('BloodfeatherStudio%20Wireframe/home/');</script>
-  <title>BloodFeather Studio</title>
-</head>
-<body></body>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BloodFeather Studios — Toronto Game Studio</title><meta content="BloodFeather Studios is a Toronto-based student-led game studio building Neon Steel, a cinematic 2.5D action brawler currently in development." name="description"/><meta content="#050307" name="theme-color"/><link href="https://bloodfeather.ca/" rel="canonical"/><link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/><meta content="website" property="og:type"/><meta content="BloodFeather Studios" property="og:site_name"/><meta content="BloodFeather Studios — Toronto Game Studio" property="og:title"/><meta content="BloodFeather Studios is a Toronto-based student-led game studio building Neon Steel, a cinematic 2.5D action brawler currently in development." property="og:description"/><meta content="https://bloodfeather.ca/" property="og:url"/><meta content="https://bloodfeather.ca/assets/bloodfeather-og.png" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><meta content="BloodFeather Studios — Toronto Game Studio" name="twitter:title"/><meta content="BloodFeather Studios is a Toronto-based student-led game studio building Neon Steel, a cinematic 2.5D action brawler currently in development." name="twitter:description"/><meta content="https://bloodfeather.ca/assets/bloodfeather-og.png" name="twitter:image"/>
+<link href="styles.css" rel="stylesheet"/>
+<style>
+    /* page-load stagger for hero */
+    .hero-label  { animation: fadeUp 0.8s var(--ease-out) 0.2s both; }
+    .hero-title  { animation: fadeUp 0.9s var(--ease-out) 0.4s both; }
+    .hero-tagline{ animation: fadeUp 0.8s var(--ease-out) 0.6s both; }
+    .hero-actions{ animation: fadeUp 0.8s var(--ease-out) 0.75s both; }
+    .hero-scroll { animation: fadeIn 1s ease 1.2s both; }
+  </style>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "BloodFeather Studios",
+  "url": "https://bloodfeather.ca/",
+  "sameAs": [
+    "https://ca.linkedin.com/company/bloodfeather-studio",
+    "https://www.instagram.com/bloodfeatherstudio/",
+    "https://beacons.ai/bloodfeatherstudios",
+    "https://bloodfeatherstudios.itch.io/neon-steel",
+    "https://www.youtube.com/@BloodFeatherStudios"
+  ],
+  "description": "BloodFeather Studios is a Toronto-based student-led game studio building Neon Steel, a cinematic 2.5D action brawler currently in development."
+}</script></head>
+<body class="page-load"><a class="skip-link" href="#main-content">Skip to content</a>
+<!-- NAV -->
+<nav aria-label="Primary navigation" class="nav">
+  <a class="nav-logo nav-logo-image" href="./" aria-label="BloodFeather Studios home">
+    <img src="assets/bloodfeather-logo.png" alt="BloodFeather Studios" class="nav-logo-img"/>
+  </a>
+  <ul class="nav-links">
+    <li><a class="" href="neon-steel/">Neon Steel</a></li><li><a class="" href="about/">About</a></li><li><a class="" href="contact/">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="contact/#follow-development">Follow Development</a>
+  <button aria-controls="mobile-navigation" aria-expanded="false" aria-label="Menu" class="hamburger" type="button"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="mobile-navigation">
+  <a href="./">Home</a>
+  <a href="neon-steel/">Neon Steel</a><a href="about/">About</a><a href="contact/">Contact</a>
+</div>
+<!-- HERO -->
+<section class="hero" id="main-content">
+<div class="hero-bg">
+<div class="hero-glow"></div>
+<div class="hero-ring"></div>
+<div class="hero-lines"></div>
+<!-- Large background feather -->
+<div class="hero-feather-bg">
+<svg fill="none" viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient gradientUnits="userSpaceOnUse" id="fbg" x1="100" x2="100" y1="0" y2="320">
+<stop offset="0%" stop-color="#BF1E37"></stop>
+<stop offset="100%" stop-color="#3D0612" stop-opacity="0.2"></stop>
+</linearGradient>
+</defs>
+<path d="M100 4C65 35 20 90 22 165C24 218 58 300 100 316C142 300 176 218 178 165C180 90 135 35 100 4Z" fill="url(#fbg)"></path>
+<line opacity="0.6" stroke="#C9913A" stroke-linecap="round" stroke-width="1.5" x1="100" x2="100" y1="4" y2="316"></line>
+<!-- Left barbs -->
+<line opacity="0.35" stroke="#C9913A" stroke-linecap="round" stroke-width="1" x1="100" x2="48" y1="60" y2="95"></line>
+<line opacity="0.35" stroke="#C9913A" stroke-linecap="round" stroke-width="1" x1="100" x2="36" y1="90" y2="128"></line>
+<line opacity="0.35" stroke="#C9913A" stroke-linecap="round" stroke-width="1" x1="100" x2="28" y1="120" y2="162"></line>
+<line opacity="0.35" stroke="#C9913A" stroke-linecap="round" stroke-width="1" x1="100" x2="26" y1="150" y2="194"></line>
+<line opacity="0.3" stroke="#C9913A" stroke-linecap="round" stroke-width="1" x1="100" x2="30" y1="180" y2="225"></line>
+<line opacity="0.25" stroke="#C9913A" stroke-linecap="round" stroke-width="1" x1="100" x2="42" y1="210" y2="252"></line>
+<!-- Right barbs -->
+<line opacity="0.35" stroke="#C9913A" stroke-linecap="round" stroke-width="1" x1="100" x2="152" y1="60" y2="95"></line>
+<line opacity="0.35" stroke="#C9913A" stroke-linecap="round" stroke-width="1" x1="100" x2="164" y1="90" y2="128"></line>
+<line opacity="0.35" stroke="#C9913A" stroke-linecap="round" stroke-width="1" x1="100" x2="172" y1="120" y2="162"></line>
+<line opacity="0.35" stroke="#C9913A" stroke-linecap="round" stroke-width="1" x1="100" x2="174" y1="150" y2="194"></line>
+<line opacity="0.3" stroke="#C9913A" stroke-linecap="round" stroke-width="1" x1="100" x2="170" y1="180" y2="225"></line>
+<line opacity="0.25" stroke="#C9913A" stroke-linecap="round" stroke-width="1" x1="100" x2="158" y1="210" y2="252"></line>
+</svg>
+</div>
+</div>
+<div class="hero-content">
+<p class="label hero-label">Toronto Game Studio  ·  Est. 2025</p>
+<h1 class="hero-title">
+<span class="blood">Blood</span>
+<span class="feather">Feather</span>
+<span class="studio">Studio</span>
+</h1>
+<p class="hero-tagline">We forge worlds from darkness.</p><p class="hero-subcopy">A student-led game studio creating sharp, cinematic action experiences with dark atmosphere, strong visual identity, and disciplined production craft.</p>
+<div class="hero-actions">
+<a class="btn btn-solid" href="contact/#follow-development">Follow Development</a>
+<a class="btn btn-ghost" href="neon-steel/">View Neon Steel</a>
+</div>
+</div>
+<div class="hero-scroll">
+<span>Scroll</span>
+<div class="hero-scroll-line"></div>
+</div>
+</section>
+<!-- FEATURED GAME -->
+<section class="featured">
+<div class="featured-inner">
+<div class="featured-visual reveal reveal-left">
+<div class="featured-visual-placeholder featured-logo-stage">
+<img src="assets/neon-steel-logo.png" alt="Neon Steel" class="featured-neon-logo"/>
+</div>
+<span class="featured-tag">Featured Project</span>
+</div>
+<div class="featured-text reveal reveal-right">
+<p class="label">Our Game</p>
+<img src="assets/neon-steel-logo.png" alt="Neon Steel" class="featured-title-logo"/>
+<p>A single player 2.5D action brawler set in a dystopian futuristic city powered by Neon. Play as Kade Ito — a gruff construction worker caught in the fallout of his estranged twin brother's actions, forced to run from his crew, the authorities, and the powers that control the city from above.</p>
+<div class="featured-meta">
+<div class="featured-meta-item">
+<span>Genre</span>
+<strong>2.5D Action Brawler</strong>
+</div>
+<div class="featured-meta-item">
+<span>Platform</span>
+<strong>PC</strong>
+</div>
+<div class="featured-meta-item">
+<span>Publisher</span>
+<strong>2Cent</strong>
+</div>
+<div class="featured-meta-item">
+<span>Status</span>
+<strong>In Development</strong>
+</div>
+</div>
+<div style="display:flex; gap:1rem; flex-wrap:wrap;">
+<a class="btn btn-neon" href="neon-steel/">Explore Neon Steel</a>
+<a class="btn btn-ghost" href="contact/#follow-development">Follow Updates</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STUDIO UPDATES -->
+<section class="updates-section" id="follow-development">
+  <div class="container updates-shell">
+    <div class="section-header reveal">
+      <p class="label">Latest From BloodFeather</p>
+      <h2>Development in motion.</h2>
+      <p>Curated studio updates, behind-the-scenes production moments, and Neon Steel progress. Each card can be wired to a specific social post once the final URLs are chosen.</p>
+    </div>
+    <div class="updates-grid stagger reveal">
+      <a class="update-card" href="https://www.instagram.com/bloodfeatherstudio/" rel="noopener noreferrer" target="_blank">
+        <span class="update-source">Instagram</span>
+        <h3>Behind the Scenes</h3>
+        <p>Mocap, voice recording, team production, and the moments that show how Neon Steel is being built.</p>
+        <span class="update-link">Open post channel →</span>
+      </a>
+      <a class="update-card" href="https://ca.linkedin.com/company/bloodfeather-studio" rel="noopener noreferrer" target="_blank">
+        <span class="update-source">LinkedIn</span>
+        <h3>Studio Milestones</h3>
+        <p>Production updates, showcase-ready announcements, and professional progress from the team.</p>
+        <span class="update-link">View studio page →</span>
+      </a>
+      <a class="update-card" href="https://www.youtube.com/@BloodFeatherStudios" rel="noopener noreferrer" target="_blank">
+        <span class="update-source">YouTube</span>
+        <h3>Video Updates</h3>
+        <p>Gameplay clips, production footage, and future trailers will live here as the project moves forward.</p>
+        <span class="update-link">Watch channel →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand-c footer-brand-logo">
+      <a aria-label="BloodFeather Studios home" href="./">
+        <img src="assets/bloodfeather-logo.png" alt="BloodFeather Studios" class="footer-logo-img"/>
+      </a>
+    </div>
+    <div class="footer-divider"><div class="divider-gem"></div></div>
+    <div class="footer-socials">
+      <a aria-label="LinkedIn" class="social-icon-btn social-icon-text" href="https://ca.linkedin.com/company/bloodfeather-studio" rel="noopener noreferrer" target="_blank">in</a>
+<a aria-label="Instagram" class="social-icon-btn social-icon-text" href="https://www.instagram.com/bloodfeatherstudio/" rel="noopener noreferrer" target="_blank">ig</a>
+<a aria-label="YouTube" class="social-icon-btn social-icon-text" href="https://www.youtube.com/@BloodFeatherStudios" rel="noopener noreferrer" target="_blank">yt</a>
+<a aria-label="Itch.io" class="social-icon-btn social-icon-text" href="https://bloodfeatherstudios.itch.io/neon-steel" rel="noopener noreferrer" target="_blank">it</a>
+<a aria-label="Beacons" class="social-icon-btn social-icon-text" href="https://beacons.ai/bloodfeatherstudios" rel="noopener noreferrer" target="_blank">bf</a>
+    </div>
+    <nav aria-label="Footer navigation" class="footer-nav">
+      <a href="./">Home</a>
+      <span class="f-sep">|</span>
+      <a href="neon-steel/">Neon Steel</a>
+      <span class="f-sep">|</span>
+      <a href="about/">About</a>
+      <span class="f-sep">|</span>
+      <a href="contact/">Contact</a>
+    </nav>
+    <div class="footer-bottom">
+      <span>© 2026 BloodFeather Studios — All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+<script src="scripts.js"></script>
+</body>
 </html>
